@@ -8,8 +8,9 @@ export function Header() {
   return (
     <nav className="sticky top-0 z-50 bg-red-500">
       <div className="flex items-center py-4 px-8 relative">
-        <div className="flex items-center bg-yellow-500 py-4 px-8">
-          <img src="/images/logo_notext.svg" className="size-16" />
+        <div className="flex items-center py-4 px-8">
+          <img src="/images/logo_transparent_notext.svg" className="size-16" />
+          <span className="pl-4 text-xl">Mosifra</span>
         </div>
         <ul className="ml-auto flex list-none p-0 m-0 gap-4">
           <li className="relative">
