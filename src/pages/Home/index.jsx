@@ -18,41 +18,44 @@ export function Home() {
   const [selected, setSelected] = useState(logos.logovert)
 
 	return (
-		<><div className="flex justify-center my-10 items-center">
+		<div className="font-tenor">
+		<div className="flex justify-center my-10 items-center">
 			<img className="size-50" src={selected} />
 		</div>
 		<div className="flex justify-center items-center gap-4">
-			<button onClick={() => setSelected(logos.logovert)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-				Logo vert 1
+			<button onClick={() => setSelected(logos.logovert)} className="bg-[#B41C25] hover:bg-[#8F161E] text-white font-bold py-2 px-4 rounded">
+			Logo vert 1
 			</button>
-			<button onClick={() => setSelected(logos.logovert2)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-				Logo vert 2
+			<button onClick={() => setSelected(logos.logovert2)} className="bg-[#B41C25] hover:bg-[#8F161E] text-white font-bold py-2 px-4 rounded">
+			Logo vert 2
 			</button>
-			<button onClick={() => setSelected(logos.logorouge)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-				Logo rouge 1
+			<button onClick={() => setSelected(logos.logorouge)} className="bg-[#B41C25] hover:bg-[#8F161E] text-white font-bold py-2 px-4 rounded">
+			Logo rouge 1
 			</button>
-			<button onClick={() => setSelected(logos.logorouge2)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-				Logo rouge 2
+			<button onClick={() => setSelected(logos.logorouge2)} className="bg-[#B41C25] hover:bg-[#8F161E] text-white font-bold py-2 px-4 rounded">
+			Logo rouge 2
 			</button>
-			<button onClick={() => setSelected(logos.logorouge3)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-				Logo rouge 3
+			<button onClick={() => setSelected(logos.logorouge3)} className="bg-[#B41C25] hover:bg-[#8F161E] text-white font-bold py-2 px-4 rounded">
+			Logo rouge 3
 			</button>
-			<button onClick={() => setSelected(logos.logojaune)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-				Logo jaune
+			<button onClick={() => setSelected(logos.logojaune)} className="bg-[#B41C25] hover:bg-[#8F161E] text-white font-bold py-2 px-4 rounded">
+			Logo jaune
 			</button>
-			<button onClick={() => setSelected(logos.logojaune2)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-				Logo jaune 2
+			<button onClick={() => setSelected(logos.logojaune2)} className="bg-[#B41C25] hover:bg-[#8F161E] text-white font-bold py-2 px-4 rounded">
+			Logo jaune 2
 			</button>
-			<button onClick={() => setSelected(logos.logonoir)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-				Logo noir
+			<button onClick={() => setSelected(logos.logonoir)} className="bg-[#B41C25] hover:bg-[#8F161E] text-white font-bold py-2 px-4 rounded">
+			Logo noir
 			</button>
-			<button onClick={() => setSelected(logos.logotransparent)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-				Logo transparent
+			<button onClick={() => setSelected(logos.logotransparent)} className="bg-[#B41C25] hover:bg-[#8F161E] text-white font-bold py-2 px-4 rounded">
+			Logo transparent
 			</button>
-			<button onClick={() => setSelected(logos.logoarch)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-				Logo différent
+			<button onClick={() => setSelected(logos.logoarch)} className="bg-[#B41C25] hover:bg-[#8F161E] text-white font-bold py-2 px-4 rounded">
+			Logo différent
 			</button>
-		</div></>
+
+		</div>
+		</div>
 	);
 }
 

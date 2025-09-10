@@ -6,7 +6,7 @@ export function Header() {
   const isActive = (p) => url === p;
 
   return (
-    <nav className="sticky top-0 z-50 bg-red-500">
+    <nav className="sticky top-0 z-50 bg-[#B41C25]">
       <div className="flex items-center py-4 px-8 relative">
         <div className="flex items-center py-4 px-8">
           <img src="/images/logo_transparent_notext.svg" className="size-16" />
@@ -20,13 +20,13 @@ export function Header() {
                 e.preventDefault();
                 route('/');
               }}
-              className={`flex items-center gap-6 py-4 px-8 border-2 border-indigo-600 ${
+              className={`flex items-center gap-6 py-4 px-8 ${
                 isActive('/')
-                  ? 'bg-green-500 text-white'
-                  : 'bg-yellow-500 text-green-500'
+                  ? 'text-indigo-500'
+                  : 'text-white'
               }`}
             >
-              <span>Home</span>
+              <span>Accueil</span>
             </a>
           </li>
           <li className="relative">
@@ -36,10 +36,10 @@ export function Header() {
               e.preventDefault();
               route('/404');
             }}
-            className={`flex items-center gap-6 py-4 px-8 border-2 border-indigo-600 ${
+            className={`flex items-center gap-6 py-4 px-8 ${
               isActive('/404')
-                ? 'bg-green-500 text-white'
-                : 'bg-yellow-500 text-green-500'
+                ? 'text-indigo-500'
+                : 'text-white'
             }`}
           >
             <span>404</span>
