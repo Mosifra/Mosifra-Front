@@ -10,7 +10,7 @@ export function Header() {
       <div className="flex items-center py-4 px-8 relative">
         <div className="flex items-center py-4 px-8">
           <img src="/images/logo_transparent_notext.svg" className="size-16" />
-          <span className="pl-4 text-xl">Mosifra</span>
+          <span className="pl-4 text-xl pt-5 text-[#39482A]">Mosifra</span>
         </div>
         <ul className="ml-auto flex list-none p-0 m-0 gap-4">
           <li className="relative">
