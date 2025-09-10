@@ -1,54 +1,68 @@
-import { useLocation } from 'preact-iso';
+"use client"
+
+import { useLocation } from "preact-iso"
 
 export function Header() {
-  const { url, route } = useLocation();
+  const { url, route } = useLocation()
 
-  const isActive = (p) => url === p;
+  const isActive = (p) => url === p
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#B41C25]">
-      <div className="flex items-center py-4 px-8 relative">
-        <div className="flex items-center py-4 px-8">
-          <img src="/images/logo_transparent_notext.svg" className="size-16" />
-          <span className="pl-4 text-xl pt-5 text-[#39482A]">Mosifra</span>
-        </div>
-        <ul className="ml-auto flex list-none p-0 m-0 gap-4">
-          <li className="relative">
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault();
-                route('/');
-              }}
-              className={`flex items-center gap-6 py-4 px-8 ${
-                isActive('/')
-                  ? 'text-indigo-500'
-                  : 'text-white'
-              }`}
-            >
-              <span>Accueil</span>
-            </a>
-          </li>
-          <li className="relative">
-          <a
-            href="/404"
-            onClick={(e) => {
-              e.preventDefault();
-              route('/404');
-            }}
-            className={`flex items-center gap-6 py-4 px-8 ${
-              isActive('/404')
-                ? 'text-indigo-500'
-                : 'text-white'
-            }`}
-          >
-            <span>404</span>
-          </a>
-        </li>
+    <nav class="sticky top-0 z-50 bg-white shadow-lg border-b border-slate-200">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
+                <img src="/images/logo_transparent_notext.svg" class="w-6 h-6" alt="Mosifra" />
+              </div>
+              <div>
+                <span class="text-xl font-bold text-slate-800">Mosifra</span>
+                <div class="text-xs text-slate-500">Université de Limoges</div>
+              </div>
+            </div>
+          </div>
 
-        </ul>
+          <ul class="flex items-center space-x-1">
+            <li>
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault()
+                  route("/")
+                }}
+                class="px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-slate-600 hover:text-slate-800 hover:bg-slate-100"
+              >
+                Accueil
+              </a>
+            </li>
+            <li>
+              <a
+                href="/stages"
+                onClick={(e) => {
+                  e.preventDefault()
+                  route("/stages")
+                }}
+                class="px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-slate-600 hover:text-slate-800 hover:bg-slate-100"
+              >
+                Stages
+              </a>
+            </li>
+            <li>
+              <a
+                href="/contact"
+                onClick={(e) => {
+                  e.preventDefault()
+                  route("/contact")
+                }}
+                class="px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-slate-600 hover:text-slate-800 hover:bg-slate-100"
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
-  );
+  )
 }
-
