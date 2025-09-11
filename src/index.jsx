@@ -2,8 +2,9 @@ import { render } from 'preact';
 import { LocationProvider, Router, Route } from 'preact-iso';
 
 import { Header } from './components/Header.jsx';
-import { Home } from './pages/Home/index.jsx';
+import { Home } from './pages/index.jsx';
 import { NotFound } from './pages/_404.jsx';
+import { LogoSelector } from './pages/Logo_selector.jsx';
 
 export function App() {
 	return (
@@ -12,6 +13,7 @@ export function App() {
 			<main>
 				<Router>
 					<Route path="/" component={Home} />
+					<Route path="/logoselector" component={LogoSelector} />
 					<Route default component={NotFound} />
 				</Router>
 			</main>

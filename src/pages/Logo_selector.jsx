@@ -12,7 +12,7 @@ import logorouge2 from "/images/logorouge2.svg";
 import logorouge3 from "/images/logorouge3.svg";
 import logoarch from "/images/logoarch.svg";
 
-export function Home() {
+export function LogoSelector() {
   const logos = {
     logovert,
     logorouge,
