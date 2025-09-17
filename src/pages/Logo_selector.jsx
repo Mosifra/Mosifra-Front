@@ -173,7 +173,7 @@ export function LogoSelector() {
             <button onClick={(e) => {
                   e.preventDefault()
                   route("/stages")
-                }} class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
+                }} class="bg-bleu-citef hover:bg-bleu-light-citef text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
               Explorer les stages
             </button>
           </div>

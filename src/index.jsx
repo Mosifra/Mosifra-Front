@@ -13,7 +13,6 @@ export function App() {
 			<main>
 				<Router>
 					<Route path="/" component={Home} />
-					<Route path="/logoselector" component={LogoSelector} />
 					<Route default component={NotFound} />
 				</Router>
 			</main>

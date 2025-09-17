@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+@theme {
+    --color-bleu-light-citef: rgba(119, 136, 180, 1);
+    --color-bleu-citef: rgba(6, 37, 196, 1);
+    --color-vert-mosifra: rgba(57, 72, 42, 1);
+    --color-beige-mosifra: rgba(244, 239, 228, 1);
+}
+
+@layer components {
+    .text-bleu-light-citef {
+        color: var(--color-bleu-light-citef);
+    }
+    .text-bleu-citef {
+        color: var(--color-bleu-citef);
+    }
+    .bg-bleu-light-citef {
+        background-color: var(--color-bleu-light-citef);
+    }
+    .bg-bleu-citef {
+        background-color: var(--color-bleu-citef);
+    }
+    .border-bleu-citef {
+        border-color: var(--color-bleu-citef);
+    }
+    .border-bleu-light-citef {
+        border-color: var(--color-bleu-light-citef);
+    }
+
+    .text-vert-mosifra {
+        color: var(--color-vert-mosifra);
+    }
+    .bg-vert-mosifra {
+        background-color: var(--color-vert-mosifra);
+    }
+    .border-vert-mosifra {
+        border-color: var(--color-vert-mosifra);
+    }
+
+    .text-beige-mosifra {
+        color: var(--color-beige-mosifra);
+    }
+    .bg-beige-mosifra {
+        background-color: var(--color-beige-mosifra);
+    }
+    .border-beige-mosifra {
+        border-color: var(--color-beige-mosifra);
+    }
+}
