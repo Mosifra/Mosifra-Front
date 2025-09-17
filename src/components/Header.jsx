@@ -25,26 +25,14 @@ export function Header() {
           <ul class="flex items-center space-x-1">
             <li>
               <a
-                href="/"
+                href="/login"
                 onClick={(e) => {
                   e.preventDefault()
-                  route("/")
+                  route("/login")
                 }}
                 class="px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-slate-600 hover:text-slate-800 hover:bg-slate-100"
               >
                 Se connecter
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                onClick={(e) => {
-                  e.preventDefault()
-                  route("/")
-                }}
-                class="px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-slate-600 hover:text-slate-800 hover:bg-slate-100"
-              >
-                S'inscrire
               </a>
             </li>
           </ul>

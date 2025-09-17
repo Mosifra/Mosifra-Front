@@ -5,10 +5,10 @@ export function NotFound() {
 
 	const { url, route } = useLocation()
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex flex-col justify-center items-center px-4">
+    <div className="min-h-screen bg-beige-mosifra flex flex-col justify-center items-center px-4">
       <div className="text-center max-w-2xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-8xl font-bold text-transparent bg-gradient-to-r from-bleu-light-citef to-bleu-citef bg-clip-text mb-4">
+          <h1 className="text-8xl font-bold text-transparent bg-gradient-to-r from-vert-mosifra to-beige-mosifra bg-clip-text mb-4">
             404
           </h1>
           <h2 className="text-3xl font-semibold text-slate-800 mb-4">Page non trouvée</h2>
@@ -24,7 +24,7 @@ export function NotFound() {
                   e.preventDefault()
                   route("/")
                 }}
-            className="inline-flex items-center px-6 py-3 border-2 border-bleu-citef text-bleu-citef font-semibold rounded-lg hover:bg-bleu-citef hover:text-white transition-all duration-300 transform hover:scale-105"
+            className="inline-flex items-center px-6 py-3 border-2 border-vert-mosifra text-vert-mosifra font-semibold rounded-lg hover:bg-vert-mosifra hover:text-white transition-all duration-300 transform hover:scale-105"
           >
             <House class="w-5 h-5 mr-2"/>
             Retour à l'accueil
@@ -35,7 +35,7 @@ export function NotFound() {
                   e.preventDefault()
                   route("/stages")
                 }}
-            className="inline-flex items-center px-6 py-3 border-2 border-bleu-citef text-bleu-citef font-semibold rounded-lg hover:bg-bleu-citef hover:text-white transition-all duration-300 transform hover:scale-105"
+            className="inline-flex items-center px-6 py-3 border-2 border-vert-mosifra text-vert-mosifra font-semibold rounded-lg hover:bg-vert-mosifra hover:text-white transition-all duration-300 transform hover:scale-105"
           >
             <List class="w-5 h-5 mr-2"/>
             Voir les stages
