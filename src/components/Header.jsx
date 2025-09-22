@@ -1,5 +1,3 @@
-"use client"
-
 import { useLocation } from "preact-iso"
 
 export function Header() {
@@ -30,7 +28,7 @@ export function Header() {
                   e.preventDefault()
                   route("/login")
                 }}
-                class="px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-slate-600 hover:text-slate-800 hover:bg-slate-100"
+                class="px-4 py-2 rounded-full font-medium transition-colors duration-200 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
               >
                 Se connecter
               </a>
