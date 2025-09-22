@@ -78,7 +78,7 @@ export function LoginPage() {
                     value={email}
                     onInput={(e) => setEmail(e.target.value)}
                     placeholder="votre.email@exemple.com"
-                    class="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:border-vert-mosifra focus:outline-none focus:ring-2 focus:ring-vert-mosifra/20"
+                    class="w-full pl-10 pr-4 py-3 border border-slate-200 text-vert-mosifra rounded-lg focus:border-vert-mosifra focus:outline-none focus:ring-2 focus:ring-vert-mosifra/20"
                     required
                   />
                 </div>
@@ -92,7 +92,7 @@ export function LoginPage() {
                     value={password}
                     onInput={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    class="w-full pl-10 pr-12 py-3 border border-slate-200 rounded-lg focus:border-vert-mosifra focus:outline-none focus:ring-2 focus:ring-vert-mosifra/20"
+                    class="w-full pl-10 pr-12 py-3 border border-slate-200 rounded-lg text-vert-mosifra focus:border-vert-mosifra focus:outline-none focus:ring-2 focus:ring-vert-mosifra/20"
                     required
                   />
                   <button
@@ -116,7 +116,7 @@ export function LoginPage() {
  
               <button
                 type="submit"
-                class="w-full bg-vert-mosifra text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-medium flex items-center justify-center gap-2"
+                class="w-full bg-beige-mosifra text-vert-mosifra py-3 rounded-lg hover:bg-vert-mosifra hover:text-white border-1 border-vert-mosifra  transition-colors font-medium flex items-center justify-center gap-2"
               >
                 Se connecter
                 <ArrowRight class="h-5 w-5" />
