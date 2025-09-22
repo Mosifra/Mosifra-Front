@@ -26,7 +26,7 @@ export function LogoSelector() {
     logorouge3,
   }
   const [selected, setSelected] = useState(logos.logovert)
-  const { url, route } = useLocation()
+  const { route } = useLocation()
 
   return (
     <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 font-sans">

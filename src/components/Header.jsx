@@ -3,8 +3,6 @@ import { useLocation } from "preact-iso"
 export function Header() {
   const { url, route } = useLocation()
 
-  const isActive = (p) => url === p
-
   return (
     <nav class="sticky top-0 z-50 bg-white shadow-lg border-b border-slate-200">
       <div class="max-w-6xl mx-auto px-1">

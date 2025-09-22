@@ -3,7 +3,7 @@ import { useLocation } from "preact-iso"
 
 export function NotFound() {
 
-	const { url, route } = useLocation()
+	const { route } = useLocation()
   return (
     <div className="min-h-screen bg-beige-mosifra flex flex-col justify-center items-center px-4">
       <div className="text-center max-w-2xl mx-auto">
