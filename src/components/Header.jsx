@@ -1,7 +1,7 @@
 import { useLocation } from "preact-iso"
 
 export function Header() {
-  const { url, route } = useLocation()
+  const { route } = useLocation()
 
   return (
     <nav class="sticky top-0 z-50 bg-white shadow-lg border-b border-slate-200">

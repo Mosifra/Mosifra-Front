@@ -1,6 +1,5 @@
 import { useState } from "preact/hooks"
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-preact"
-import { useLocation } from "preact-iso"
 
 export function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
