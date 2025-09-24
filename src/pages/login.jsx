@@ -6,10 +6,43 @@ export function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [userType, setUserType] = useState("student")
+  const [errorMessage, setErrorMessage] = useState("")
 
-  const handleSubmit = (e) => {
-    e.preventDefault() 
-    console.log("Connexion:", { email, password, userType })
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const connectionPayload = {
+      email, // Look to add regex for login instead of mail
+      password,
+    };
+    console.log("test");
+    try {
+      const response = await fetch(`http://localhost:8000/login_university`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(connectionPayload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erreur lors de la requête")
+      }
+
+      const data = await response.json();
+      console.log("Réponse API :", data);
+
+      if (data.exists) {
+        console.log("Logged", data);
+      } else {
+        setErrorMessage("Mot de passe incorrect.");
+      }
+    } catch (error) {
+      console.error("Erreur:", error)
+      setErrorMessage("Impossible de se connecter. Réessayez plus tard.")
+    }
   }
 
   return (
@@ -111,6 +144,10 @@ export function LoginPage() {
                   Mot de passe oublié ?
                 </a>
               </div>
+
+
+                  <p class="text-red-600 text-sm mt-2 text-center">{errorMessage}</p>
+
  
               <button
                 type="submit"
