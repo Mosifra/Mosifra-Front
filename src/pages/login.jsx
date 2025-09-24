@@ -1,34 +1,32 @@
+
 import { useState } from "preact/hooks"
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-preact"
 
 export function LoginPage() {
-  const [showPassword, setShowPassword] = useState(false)
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [userType, setUserType] = useState("student")
-  const [errorMessage, setErrorMessage] = useState("")
-
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [userType, setUserType] = useState("student");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const connectionPayload = {
-      email, // Look to add regex for login instead of mail
-      password,
-    };
-    console.log("test");
+    const connectionPayload = new URLSearchParams();
+    connectionPayload.append('mail', email);
+    connectionPayload.append('password', password);
+
     try {
-      const response = await fetch(`http://localhost:8000/login_university`, {
+      const response = await fetch('http://localhost:8000/login_university', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify(connectionPayload),
+        body: connectionPayload.toString(),
       });
 
       if (!response.ok) {
-        throw new Error("Erreur lors de la requête")
+        throw new Error("Erreur lors de la requête");
       }
 
       const data = await response.json();
@@ -40,10 +38,10 @@ export function LoginPage() {
         setErrorMessage("Mot de passe incorrect.");
       }
     } catch (error) {
-      console.error("Erreur:", error)
-      setErrorMessage("Impossible de se connecter. Réessayez plus tard.")
+      console.error("Erreur:", error);
+      setErrorMessage("Impossible de se connecter. Réessayez plus tard.");
     }
-  }
+  };
 
   return (
     <div class="min-h-screen bg-gradient-to-br from-beige-mosifra to-white">
