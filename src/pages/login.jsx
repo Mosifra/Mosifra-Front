@@ -17,7 +17,7 @@ export function LoginPage() {
     connectionPayload.append('password', password);
 
     try {
-      const response = await fetch('http://localhost:8000/login_university', {
+      const response = await fetch(`http://localhost:8000/login_${userType}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
