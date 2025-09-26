@@ -8,6 +8,8 @@ export function Twofa() {
   const [code, setCode] = useState("");
 
   const transactionId = location.query.transaction_id;
+  const rememberMe = location.query.remember_me;
+  const userType = location.query.type;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +17,8 @@ export function Twofa() {
     const connectionPayload = new URLSearchParams();
     connectionPayload.append("code", code);
     connectionPayload.append("transaction_id", transactionId);
+    connectionPayload.append("user_type", userType);
+    connectionPayload.append("remember_me", rememberMe);
 
     try {
       const response = await fetch("http://localhost:8000/2fa", {

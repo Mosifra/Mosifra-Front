@@ -10,6 +10,7 @@ export function LoginPage() {
   const [userType, setUserType] = useState("student");
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleSubmit = async (e) => {
     setIsLoading(true);
@@ -18,6 +19,7 @@ export function LoginPage() {
     const connectionPayload = new URLSearchParams();
     connectionPayload.append('mail', email);
     connectionPayload.append('password', password);
+    connectionPayload.append('remember_me', rememberMe);
 
     try {
       const response = await fetch(`http://localhost:8000/login_${userType}`, {
@@ -36,7 +38,7 @@ export function LoginPage() {
       console.log("Réponse API :", data);
 
       if (data.transaction_id) {
-        location.route(`/twofa?transaction_id=${data.transaction_id}`);
+        location.route(`/twofa?type=${userType}&transaction_id=${data.transaction_id}&remember_me=${rememberMe}`);
       } else {
         setErrorMessage("Mot de passe incorrect.");
       }
@@ -140,7 +142,7 @@ export function LoginPage() {
               </div> 
               <div class="flex items-center justify-between">
                 <label class="flex items-center">
-                  <input type="checkbox" class="rounded border-slate-300 text-vert-mosifra focus:ring-vert-mosifra" />
+                  <input type="checkbox" checked={rememberMe} onChange={(e) => setRememberMe(e.currentTarget.checked)} class="rounded border-slate-300 text-vert-mosifra focus:ring-vert-mosifra" />
                   <span class="ml-2 text-sm text-slate-600">Se souvenir de moi</span>
                 </label>
                 <a href="#" class="text-sm text-vert-mosifra hover:underline">
