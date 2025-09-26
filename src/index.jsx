@@ -6,6 +6,7 @@ import { Home } from './pages/index.jsx';
 import { NotFound } from './pages/_404.jsx';
 import { LoginPage } from './pages/login.jsx';
 import { Twofa } from './pages/twofa.jsx';
+import { GG } from './pages/gg.jsx';
 
 export function App() {
 	return (
@@ -16,6 +17,7 @@ export function App() {
 					<Route path="/" component={Home} />
           			<Route path="/login" component={LoginPage}/>
           			<Route path="/twofa" component={Twofa}/>
+          			<Route path="/gg" component={GG}/>
 					<Route default component={NotFound} />
 				</Router>
 			</main> 

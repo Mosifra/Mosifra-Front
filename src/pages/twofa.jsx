@@ -1,16 +1,46 @@
 import { useState } from "preact/hooks";
 import { useLocation } from "preact-iso";
-import { Binary, ArrowRight } from "lucide-preact"
+import { Binary, ArrowRight } from "lucide-preact";
 
 export function Twofa() {
   const location = useLocation();
+  const [errorMessage, setErrorMessage] = useState("");
   const [code, setCode] = useState("");
 
   const transactionId = location.query.transaction_id;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  }
+
+    const connectionPayload = new URLSearchParams();
+    connectionPayload.append("code", code);
+    connectionPayload.append("transaction_id", transactionId);
+
+    try {
+      const response = await fetch("http://localhost:8000/2fa", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: connectionPayload.toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erreur lors de la requête");
+      }
+
+      const data = await response.text();
+      console.log("Réponse API", data);
+
+      if (data === "Logged in") {
+        location.route("/gg");
+      } else {
+        setErrorMessage("Code incorrect, veuillez réessayer.")
+      }
+    } catch (error) {
+      console.error("Erreur:", error);
+    }
+  };
 
   return (
     <div class="min-h-screen bg-gradient-to-br from-beige-mosifra to-white">
@@ -46,6 +76,7 @@ export function Twofa() {
                   />
                 </div>
               </div>
+              <p class="text-red-600 text-sm mt-2 text-center">{errorMessage}</p>
 
               <button
                 type="submit"

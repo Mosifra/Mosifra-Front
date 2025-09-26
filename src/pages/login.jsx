@@ -42,7 +42,7 @@ export function LoginPage() {
       }
     } catch (error) {
       console.error("Erreur:", error);
-      setErrorMessage("Impossible de se connecter. Réessayez plus tard.");
+      setErrorMessage("Impossible de se connecter. Vérifiez vos identifiants ou réessayez plus tard.");
     } finally {
       setIsLoading(false);
     }
