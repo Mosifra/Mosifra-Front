@@ -1,14 +1,18 @@
 import { useState } from "preact/hooks"
+import { useLocation } from "preact-iso"
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-preact"
 
 export function LoginPage() {
+  const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("student");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
 
     const connectionPayload = new URLSearchParams();
@@ -31,14 +35,16 @@ export function LoginPage() {
       const data = await response.json();
       console.log("Réponse API :", data);
 
-      if (data.exists) {
-        console.log("Logged", data);
+      if (data.transaction_id) {
+        location.route(`/twofa?transaction_id=${data.transaction_id}`);
       } else {
         setErrorMessage("Mot de passe incorrect.");
       }
     } catch (error) {
       console.error("Erreur:", error);
       setErrorMessage("Impossible de se connecter. Réessayez plus tard.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -148,10 +154,16 @@ export function LoginPage() {
  
               <button
                 type="submit"
-                class="w-full bg-beige-mosifra text-vert-mosifra py-3 rounded-lg hover:bg-vert-mosifra hover:text-white border-1 border-vert-mosifra  transition-colors font-medium flex items-center justify-center gap-2"
+                disabled={isLoading} // ✅ bouton désactivé pendant chargement
+                class={`w-full py-3 rounded-lg border-1 transition-colors font-medium flex items-center justify-center gap-2
+                  ${
+                    isLoading
+                      ? "bg-gray-300 text-gray-600 border-gray-300 cursor-not-allowed"
+                      : "bg-beige-mosifra text-vert-mosifra hover:bg-vert-mosifra hover:text-white border-vert-mosifra"
+                  }`}
               >
-                Se connecter
-                <ArrowRight class="h-5 w-5" />
+                {isLoading ? "Veuillez patienter..." : "Se connecter"}
+                {!isLoading && <ArrowRight class="h-5 w-5" />}
               </button>
             </form>
 

@@ -1,12 +1,16 @@
 import { useState } from "preact/hooks";
-import { Binary, ArrowRight } from "lucide-preact";
+import { useLocation } from "preact-iso";
+import { Binary, ArrowRight } from "lucide-preact"
 
 export function Twofa() {
+  const location = useLocation();
   const [code, setCode] = useState("");
 
-  const handleSubmit = async (e) => {
+  const transactionId = location.query.transaction_id;
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-  };
+  }
 
   return (
     <div class="min-h-screen bg-gradient-to-br from-beige-mosifra to-white">
