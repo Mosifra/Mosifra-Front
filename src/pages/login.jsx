@@ -19,7 +19,7 @@ export function LoginPage() {
     const connectionPayload = new URLSearchParams();
     connectionPayload.append('mail', email);
     connectionPayload.append('password', password);
-    connectionPayload.append('remember_me', rememberMe);
+    connectionPayload.append('remember_me', rememberMe.toString());
 
     try {
       const response = await fetch(`http://localhost:8000/login_${userType}`, {
