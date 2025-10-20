@@ -21,7 +21,7 @@ export function Twofa() {
     connectionPayload.append("remember_me", rememberMe);
 
     try {
-      const response = await fetch("http://localhost:8000/2fa", {
+      const response = await fetch("http://localhost:8000/twofa", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
