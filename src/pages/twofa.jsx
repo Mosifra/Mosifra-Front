@@ -27,6 +27,7 @@ export function Twofa() {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: connectionPayload.toString(),
+        credentials: "include"
       });
 
       if (!response.ok) {
