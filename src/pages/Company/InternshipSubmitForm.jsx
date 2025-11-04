@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "preact/hooks"
 
 export default function SubmitInternship() {
@@ -19,15 +17,15 @@ export default function SubmitInternship() {
     return weeks
   }
 
-  const handleChange = (e: Event) => {
-    const target = e.target as HTMLInputElement | HTMLTextAreaElement
+  const handleChange = (e) => {
+    const target = e.target
     setFormData({
       ...formData,
       [target.name]: target.value,
     })
   }
 
-  const handleSubmit = (e: Event) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     console.log("Internship submitted:", {
       ...formData,
@@ -123,7 +121,7 @@ export default function SubmitInternship() {
               {duration > 0 && (
                 <div className="bg-gray-50 rounded-lg p-4 border border-gray-300">
                   <p className="text-sm text-gray-700">
-                    Durée du stage :{" "}
+                    Durée du stage:{" "}
                     <span className="font-bold text-vert-mosifra">
                       {duration} semaine{duration > 1 ? "s" : ""}
                     </span>

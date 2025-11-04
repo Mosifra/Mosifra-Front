@@ -29,7 +29,7 @@ const mockCandidates = [
 
 export default function ManageCandidates() {
   const [selectedCandidate, setSelectedCandidate] = useState(mockCandidates[0])
-  const [messages, setMessages] = useState<Array<{ role: string; text: string }>>([
+  const [messages, setMessages] = useState([
     { role: "candidate", text: "Si j'avais le choix entre tuer ma mère ou abandonner Openshift je tuerais ma mère" },
     { role: "company", text: "Bonjour Victor, en vrai je comprends." },
   ])
@@ -41,9 +41,10 @@ export default function ManageCandidates() {
     setNewMessage("")
   }
 
-  const handleStatusChange = (status: string) => {
+  const handleStatusChange = (status) => {
     setSelectedCandidate({ ...selectedCandidate, status })
   }
+
 
   const stats = {
     pending: mockCandidates.filter((c) => c.status === "pending").length,
@@ -167,7 +168,7 @@ export default function ManageCandidates() {
                 <input
                   type="text"
                   value={newMessage}
-                  onChange={(e) => setNewMessage((e.target as HTMLInputElement).value)}
+                  onChange={(e) => setNewMessage(e.target.value)}
                   onKeyPress={(e) => {
                     if (e.key === "Enter") handleSendMessage()
                   }}
