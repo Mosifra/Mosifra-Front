@@ -3,7 +3,7 @@ import { useLocation } from "preact-iso"
 
 export default function CompanyHome() {
   const location = useLocation();
-  const companyName = "Entreprise bullshit numéro 22"
+  const companyName = "Entreprise bullshit numéro 22";
 
   const handleSubmitInternship = () => {
     location.route("/company/submitinternship")
