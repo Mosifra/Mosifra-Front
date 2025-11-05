@@ -38,6 +38,8 @@ export function Twofa() {
       console.log("Réponse API", data);
 
       if (data === "Logged in") {
+        document.cookie = `session_id=${sessionId}; path=/;`;
+        document.cookie = `user_type=${userType}; path=/;`;
         location.route("/");
       } else {
         setErrorMessage("Code incorrect, veuillez réessayer.")

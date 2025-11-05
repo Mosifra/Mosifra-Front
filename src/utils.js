@@ -4,5 +4,5 @@ export function getUserTypeFromCookie() {
     acc[k] = v;
     return acc;
   }, {});
-  return cookies.sessionId ? cookies.userType : null;
+  return cookies.session_id ? cookies.user_type : null;
 }
