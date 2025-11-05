@@ -1,6 +1,7 @@
 import { useState, useEffect } from "preact/hooks"
 import { useLocation } from "preact-iso"
 import { Upload, Save, X, FileText, User, Mail, Phone } from "lucide-preact"
+import { getUserTypeFromCookie } from "../../utils"
 
 export default function StudentAccount() {
   const location = useLocation()
@@ -22,16 +23,9 @@ export default function StudentAccount() {
   const [successMessage, setSuccessMessage] = useState("")
 
   useEffect(() => {
-    /*const userTypeCookie = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("userType="))
-      ?.split("=")[1]
+    setUserType(getUserTypeFromCookie());
 
-    setUserType(userTypeCookie) */
-
-    const userTypeCookie = "student";
-
-    if (userTypeCookie !== "student") {
+    if (userType !== "student") {
       alert("Accès réservé aux étudiants")
       location.route("/login")
     }

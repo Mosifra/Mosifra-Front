@@ -5,7 +5,6 @@ import { useState } from "preact/hooks"
 import { useLocation } from "preact-iso"
 
 export default function UniversityClasses() {
-  const location = useLocation()
   const [classes, setClasses] = useState([
     {
       id: 1,

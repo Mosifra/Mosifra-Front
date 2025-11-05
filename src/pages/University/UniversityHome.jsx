@@ -1,4 +1,4 @@
-import { Users, BarChart3, Settings } from "lucide-preact"
+import { Users } from "lucide-preact"
 import { useLocation } from "preact-iso"
 
 export default function UniversityHome() {
