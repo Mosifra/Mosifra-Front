@@ -38,7 +38,7 @@ export function Twofa() {
       console.log("Réponse API", data);
 
       if (data === "Logged in") {
-        location.route("/gg");
+        location.route("/");
       } else {
         setErrorMessage("Code incorrect, veuillez réessayer.")
       }
