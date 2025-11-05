@@ -1,11 +1,7 @@
 import { useState, useEffect } from "preact/hooks"
-import { useLocation } from "preact-iso"
 import { Upload, Save, X, FileText, User, Mail, Phone } from "lucide-preact"
-import { getUserTypeFromCookie } from "../../utils"
 
 export default function StudentAccount() {
-  const location = useLocation()
-  const [userType, setUserType] = useState(null)
   const [studentData, setStudentData] = useState({
     firstName: "Victor",
     lastName: "Maguer",
@@ -23,12 +19,6 @@ export default function StudentAccount() {
   const [successMessage, setSuccessMessage] = useState("")
 
   useEffect(() => {
-    setUserType(getUserTypeFromCookie());
-
-    if (userType !== "student") {
-      alert("Accès réservé aux étudiants")
-      location.route("/login")
-    }
 
     // Remplacer par call api sur infos étudiant
     // const fetchStudentData = async () => {

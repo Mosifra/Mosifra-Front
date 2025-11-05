@@ -1,8 +1,5 @@
-"use client"
-
 import { Plus, Upload, Trash2, ChevronLeft } from "lucide-preact"
 import { useState } from "preact/hooks"
-import { useLocation } from "preact-iso"
 
 export default function UniversityClasses() {
   const [classes, setClasses] = useState([
