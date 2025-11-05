@@ -1,11 +1,11 @@
 import { useState } from "preact/hooks"
 import { useLocation } from "preact-iso"
-import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-preact"
+import { Lock, Eye, EyeOff, ArrowRight, UserRound } from "lucide-preact"
 
 export function LoginPage() {
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
+  const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("student");
   const [errorMessage, setErrorMessage] = useState("");
@@ -17,7 +17,7 @@ export function LoginPage() {
     e.preventDefault();
 
     const connectionPayload = new URLSearchParams();
-    connectionPayload.append('mail', email);
+    connectionPayload.append('login', login);
     connectionPayload.append('password', password);
     connectionPayload.append('remember_me', rememberMe.toString());
 
@@ -106,14 +106,14 @@ export function LoginPage() {
 
             <form onSubmit={handleSubmit} class="space-y-6"> 
               <div>
-                <label class="block text-sm font-medium text-slate-700 mb-2">Adresse email</label>
+                <label class="block text-sm font-medium text-slate-700 mb-2">Nom d'utilisateur</label>
                 <div class="relative">
-                  <Mail class="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
+                  <UserRound class="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
                   <input
-                    type="email"
-                    value={email}
-                    onInput={(e) => setEmail(e.target.value)}
-                    placeholder="votre.email@exemple.com"
+                    type="text"
+                    value={login}
+                    onInput={(e) => setLogin(e.target.value)}
+                    placeholder="Mosifra-Man"
                     class="w-full pl-10 pr-4 py-3 border border-slate-200 text-vert-mosifra rounded-lg focus:border-vert-mosifra focus:outline-none focus:ring-2 focus:ring-vert-mosifra/20"
                     required
                   />
