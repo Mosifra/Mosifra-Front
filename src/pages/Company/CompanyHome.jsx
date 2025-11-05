@@ -36,7 +36,7 @@ export default function CompanyHome() {
               </div>
               <button
                 onClick={handleSubmitInternship}
-                className="w-full px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition"
+                className="w-full px-6 py-3 rounded-lg font-medium transition-colors duration-200 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
               >
                 Accéder
               </button>
@@ -54,7 +54,7 @@ export default function CompanyHome() {
               </div>
               <button
                 onClick={handleManageCandidates}
-                className="w-full px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition"
+                className="w-full px-6 py-3 rounded-lg font-medium transition-colors duration-200 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
               >
                 Accéder
               </button>

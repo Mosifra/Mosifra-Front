@@ -11,10 +11,9 @@ export default function StudentAccount() {
     email: "victor.maguer@etsmaguer.com",
     phone: "+33 6 12 34 56 78",
     university: "Université de Limoges",
-    major: "Informatique",
+    major: "BUT3 Informatique",
     cv: null,
     cvName: "Cv_Maguer_Victor.pdf",
-    bio: "Étudiant en informatique passionné par Openshift.",
   })
 
   const [isEditing, setIsEditing] = useState(false)
@@ -23,12 +22,14 @@ export default function StudentAccount() {
   const [successMessage, setSuccessMessage] = useState("")
 
   useEffect(() => {
-    const userTypeCookie = document.cookie
+    /*const userTypeCookie = document.cookie
       .split("; ")
       .find((row) => row.startsWith("userType="))
       ?.split("=")[1]
 
-    setUserType(userTypeCookie)
+    setUserType(userTypeCookie) */
+
+    const userTypeCookie = "student";
 
     if (userTypeCookie !== "student") {
       alert("Accès réservé aux étudiants")
@@ -81,7 +82,6 @@ export default function StudentAccount() {
       formData.append("phone", editData.phone)
       formData.append("university", editData.university)
       formData.append("major", editData.major)
-      formData.append("bio", editData.bio)
 
       if (editData.cv) {
         formData.append("cv", editData.cv)
@@ -123,7 +123,7 @@ export default function StudentAccount() {
         )}
 
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-vert-mosifra to-green-700 p-8 text-white">
+          <div className="bg-vert-mosifra p-8 text-white">
             <div className="flex items-center gap-6">
               <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center">
                 <User size={40} className="text-vert-mosifra" />
@@ -216,7 +216,7 @@ export default function StudentAccount() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Spécialité</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Cursus</label>
                     {isEditing ? (
                       <input
                         type="text"
@@ -230,22 +230,6 @@ export default function StudentAccount() {
                     )}
                   </div>
                 </div>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-bold text-vert-mosifra mb-4">Biographie</h3>
-                {isEditing ? (
-                  <textarea
-                    name="bio"
-                    value={editData.bio}
-                    onChange={handleInputChange}
-                    rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-vert-mosifra focus:outline-none"
-                    placeholder="Parlez de vous..."
-                  />
-                ) : (
-                  <p className="px-4 py-2 bg-gray-50 rounded-lg text-gray-700">{studentData.bio}</p>
-                )}
               </div>
 
               <div>
@@ -323,7 +307,7 @@ export default function StudentAccount() {
                   <button
                     type="button"
                     onClick={handleEditToggle}
-                    className="flex-1 px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition"
+                    className="flex-1 px-4 py-3 rounded-lg font-medium transition-colors duration-200 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
                   >
                     Modifier mon profil
                   </button>

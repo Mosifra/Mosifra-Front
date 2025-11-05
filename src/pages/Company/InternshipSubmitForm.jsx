@@ -131,7 +131,7 @@ export default function SubmitInternship() {
 
               <button
                 type="submit"
-                className="w-full bg-vert-mosifra text-white font-semibold py-3 rounded-lg hover:opacity-90 transition"
+                className="w-full py-3 rounded-lg font-medium transition-colors duration-200 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
               >
                 Proposer le stage
               </button>
