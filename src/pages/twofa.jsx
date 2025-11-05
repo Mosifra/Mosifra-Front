@@ -34,11 +34,11 @@ export function Twofa() {
         throw new Error("Erreur lors de la requête");
       }
 
-      const data = await response.text();
+      const data = await response.json();
       console.log("Réponse API", data);
 
-      if (data === "Logged in") {
-        document.cookie = `session_id=${sessionId}; path=/;`;
+      if (data.session_id !== null) {
+        document.cookie = `session_id=${data.session_id}; path=/;`;
         document.cookie = `user_type=${userType}; path=/;`;
         location.route("/");
       } else {
