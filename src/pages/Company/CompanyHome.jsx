@@ -60,21 +60,6 @@ export default function CompanyHome() {
               </button>
             </div>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mt-16">
-            <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <p className="text-4xl font-bold text-vert-mosifra mb-2">12</p>
-              <p className="text-gray-600">Offres actives</p>
-            </div>
-            <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <p className="text-4xl font-bold text-vert-mosifra mb-2">45</p>
-              <p className="text-gray-600">Candidatures</p>
-            </div>
-            <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <p className="text-4xl font-bold text-vert-mosifra mb-2">8</p>
-              <p className="text-gray-600">Acceptées</p>
-            </div>
-          </div>
         </div>
       </main>
     </>

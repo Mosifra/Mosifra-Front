@@ -26,6 +26,11 @@ export function Header() {
           </div>
 
           <ul class="flex items-center space-x-3">
+                <li>
+                  <a href="/" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
+                    Accueil
+                  </a>
+                </li>
             {!userType && (
               <li>
                 <a
@@ -44,11 +49,6 @@ export function Header() {
             {userType === "student" && (
               <>
                 <li>
-                  <a href="/" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
-                    Accueil
-                  </a>
-                </li>
-                <li>
                   <a href="/student/account" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
                     Compte
                   </a>
@@ -63,11 +63,6 @@ export function Header() {
 
             {userType === "company" && (
               <>
-                <li>
-                  <a href="/" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
-                    Accueil
-                  </a>
-                </li>
                 <li>
                   <a href="/company/managecandidates" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
                     Candidatures
@@ -86,6 +81,11 @@ export function Header() {
                 <li>
                   <a href="/internships" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
                     Stages
+                  </a>
+                </li>
+                <li>
+                  <a href="/university/students" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
+                    Promotions
                   </a>
                 </li>
               </>

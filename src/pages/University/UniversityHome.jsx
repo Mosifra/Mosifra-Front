@@ -9,13 +9,16 @@ export default function UniversityHome() {
     location.route("/university/students")
   }
 
+  const handleViewInternships = () => {
+    location.route("/internships")
+  }
+
   return (
     <>
       <main className="min-h-screen bg-beige-mosifra">
         <div className="max-w-6xl mx-auto px-4 py-16">
           <div className="mb-16">
             <h1 className="text-5xl font-bold text-vert-mosifra mb-2">Bienvenue, {universityName}</h1>
-            <p className="text-xl text-gray-700">Gérez vos étudiants et leurs stages</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -24,9 +27,26 @@ export default function UniversityHome() {
                 <div className="w-12 h-12 bg-vert-mosifra rounded-lg flex items-center justify-center mb-4">
                   <Users />
                 </div>
+                <h2 className="text-2xl font-bold text-vert-mosifra mb-2">Voir les offres de stage</h2>
+                <p className="text-gray-600">
+                  Consultez la liste des stages mis à disposition par les entreprises.
+                </p>
+              </div>
+              <button
+                onClick={handleViewInternships}
+                className="w-full px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition"
+              >
+                Accéder
+              </button>
+            </div>
+            <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra hover:shadow-lg transition">
+              <div className="mb-6">
+                <div className="w-12 h-12 bg-vert-mosifra rounded-lg flex items-center justify-center mb-4">
+                  <Users />
+                </div>
                 <h2 className="text-2xl font-bold text-vert-mosifra mb-2">Gérer les étudiants</h2>
                 <p className="text-gray-600">
-                  Consultez la liste des étudiants, leurs profils et leurs placements en stages.
+                  Gérer vos promotions et la liste des étudiants.
                 </p>
               </div>
               <button
@@ -35,21 +55,6 @@ export default function UniversityHome() {
               >
                 Accéder
               </button>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mt-16">
-            <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <p className="text-4xl font-bold text-vert-mosifra mb-2">1,245</p>
-              <p className="text-gray-600">Étudiants</p>
-            </div>
-            <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <p className="text-4xl font-bold text-vert-mosifra mb-2">892</p>
-              <p className="text-gray-600">En stage</p>
-            </div>
-            <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <p className="text-4xl font-bold text-vert-mosifra mb-2">156</p>
-              <p className="text-gray-600">Entreprises partenaires</p>
             </div>
           </div>
         </div>

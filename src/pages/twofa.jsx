@@ -11,6 +11,13 @@ export function Twofa() {
   const rememberMe = location.query.remember_me;
   const userType = location.query.type;
 
+  const remember = rememberMe === "true";
+
+  const ttl = remember
+    ? 30 * 24 * 3600
+    : 30 * 60;      
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -38,8 +45,8 @@ export function Twofa() {
       console.log("Réponse API", data);
 
       if (data.session_id !== null) {
-        document.cookie = `session_id=${data.session_id}; path=/;`;
-        document.cookie = `user_type=${userType}; path=/;`;
+        document.cookie = `session_id=${data.session_id}; path=/; max-age=${ttl};`;
+        document.cookie = `user_type=${userType}; path=/; max-age=${ttl};`;
         location.route("/");
       } else {
         setErrorMessage("Code incorrect, veuillez réessayer.")
