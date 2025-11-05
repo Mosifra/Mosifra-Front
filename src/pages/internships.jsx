@@ -1,6 +1,7 @@
 import { useState, useEffect } from "preact/hooks"
 import { useLocation } from "preact-iso"
 import { Send, Upload, X, BookOpen } from "lucide-preact"
+import { getUserTypeFromCookie } from "../utils"
 
 export default function Internships() {
   const location = useLocation()
@@ -16,12 +17,8 @@ export default function Internships() {
   const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
-    const userTypeCookie = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("userType="))
-      ?.split("=")[1]
 
-    setUserType(userTypeCookie || null)
+    setUserType(getUserTypeFromCookie())
 
     const mockInternships = [
       {

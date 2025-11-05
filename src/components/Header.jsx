@@ -1,7 +1,14 @@
+import { useEffect, useState } from "preact/hooks"
+import { getUserTypeFromCookie } from "../utils.js"
 import { useLocation } from "preact-iso"
 
 export function Header() {
   const { route } = useLocation()
+  const [userType, setUserType] = useState(null)
+
+  useEffect(() => {
+    setUserType(getUserTypeFromCookie())
+  }, [])
 
   return (
     <nav class="sticky top-0 z-50 bg-white shadow-lg border-b border-slate-200">
@@ -18,19 +25,71 @@ export function Header() {
             </div>
           </div>
 
-          <ul class="flex items-center space-x-1">
-            <li>
-              <a
-                href="/login"
-                onClick={(e) => {
-                  e.preventDefault()
-                  route("/login")
-                }}
-                class="px-4 py-2 rounded-full font-medium transition-colors duration-200 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
-              >
-                Se connecter
-              </a>
-            </li>
+          <ul class="flex items-center space-x-3">
+            {!userType && (
+              <li>
+                <a
+                  href="/login"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    route("/login")
+                  }}
+                  class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium"
+                >
+                  Se connecter
+                </a>
+              </li>
+            )}
+
+            {userType === "student" && (
+              <>
+                <li>
+                  <a href="/" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
+                    Accueil
+                  </a>
+                </li>
+                <li>
+                  <a href="/student/account" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
+                    Compte
+                  </a>
+                </li>
+                <li>
+                  <a href="/internships" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
+                    Stages
+                  </a>
+                </li>
+              </>
+            )}
+
+            {userType === "company" && (
+              <>
+                <li>
+                  <a href="/" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
+                    Accueil
+                  </a>
+                </li>
+                <li>
+                  <a href="/company/managecandidates" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
+                    Candidatures
+                  </a>
+                </li>
+                <li>
+                  <a href="/company/submitinternship" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
+                    Créer une offre
+                  </a>
+                </li>
+              </>
+            )}
+
+            {userType === "university" && (
+              <>
+                <li>
+                  <a href="/internships" class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium">
+                    Stages
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
