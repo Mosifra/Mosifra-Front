@@ -1,3 +1,4 @@
+//TO FIX HERE AND/OR IN HOME/HEADER
 export async function getUserTypeFromCookie() {
   const cookies = document.cookie.split("; ").reduce((acc, c) => {
     const [k, v] = c.split("=");
