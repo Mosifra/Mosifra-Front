@@ -47,6 +47,9 @@ export function Twofa() {
       if (data.session_id !== null) {
         document.cookie = `session_id=${data.session_id}; path=/; max-age=${ttl};`;
         document.cookie = `user_type=${userType}; path=/; max-age=${ttl};`;
+
+        window.dispatchEvent(new Event("userTypeUpdated"));
+
         location.route("/");
       } else {
         setErrorMessage("Code incorrect, veuillez réessayer.")
