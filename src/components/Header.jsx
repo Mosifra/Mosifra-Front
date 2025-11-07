@@ -7,8 +7,8 @@ export function Header() {
   const [userType, setUserType] = useState(null);
 
   useEffect(() => {
-    const updateUserType = () => {
-      setUserType(getUserTypeFromCookie());
+    const updateUserType = async () => {
+      setUserType(await getUserTypeFromCookie());
     };
 
     updateUserType();

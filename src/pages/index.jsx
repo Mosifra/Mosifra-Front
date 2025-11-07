@@ -5,8 +5,8 @@ import UniversityHome from "./University/UniversityHome.jsx";
 import Home from "./defaultindex.jsx";
 
 
-export function HomeRouter() {
-  const userType = getUserTypeFromCookie();
+export async function HomeRouter() {
+  const userType = await getUserTypeFromCookie();
 
 
   if (userType === "company") return <CompanyHome />;
