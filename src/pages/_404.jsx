@@ -3,7 +3,7 @@ import { useLocation } from "preact-iso"
 
 export function NotFound() {
 
-	const { route } = useLocation()
+  const { route } = useLocation()
   return (
     <div className="min-h-screen bg-beige-mosifra flex flex-col justify-center items-center px-4">
       <div className="text-center max-w-2xl mx-auto">
@@ -19,25 +19,25 @@ export function NotFound() {
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-		  href="/"
+            href="/"
             onClick={(e) => {
-                  e.preventDefault()
-                  route("/")
-                }}
+              e.preventDefault()
+              route("/")
+            }}
             className="inline-flex items-center px-6 py-3 border-2 border-vert-mosifra text-vert-mosifra font-semibold rounded-lg hover:bg-vert-mosifra hover:text-white transition-all duration-300 transform hover:scale-105"
           >
-            <House class="w-5 h-5 mr-2"/>
+            <House class="w-5 h-5 mr-2" />
             Retour à l'accueil
           </a>
           <a
-		  	href="/stages"
+            href="/stages"
             onClick={(e) => {
-                  e.preventDefault()
-                  route("/stages")
-                }}
+              e.preventDefault()
+              route("/stages")
+            }}
             className="inline-flex items-center px-6 py-3 border-2 border-vert-mosifra text-vert-mosifra font-semibold rounded-lg hover:bg-vert-mosifra hover:text-white transition-all duration-300 transform hover:scale-105"
           >
-            <List class="w-5 h-5 mr-2"/>
+            <List class="w-5 h-5 mr-2" />
             Voir les stages
           </a>
         </div>

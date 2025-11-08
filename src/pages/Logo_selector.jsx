@@ -1,16 +1,16 @@
-import { useState } from "preact/hooks"
-import { useLocation } from "preact-iso"
+import { useLocation } from "preact-iso";
+import { useState } from "preact/hooks";
 
-import logovert from "/images/logoverttext.svg";
-import logorouge from "/images/logorouge.svg";
-import logojaune from "/images/logojaune.svg";
-import logonoir from "/images/logonoir.svg";
 import logotransparent from "/images/logo_transparent_notext.svg";
-import logovert2 from "/images/logovert2.svg";
+import logoarch from "/images/logoarch.svg";
+import logojaune from "/images/logojaune.svg";
 import logojaune2 from "/images/logojaune2.svg";
+import logonoir from "/images/logonoir.svg";
+import logorouge from "/images/logorouge.svg";
 import logorouge2 from "/images/logorouge2.svg";
 import logorouge3 from "/images/logorouge3.svg";
-import logoarch from "/images/logoarch.svg";
+import logovert2 from "/images/logovert2.svg";
+import logovert from "/images/logoverttext.svg";
 
 export function LogoSelector() {
   const logos = {
@@ -27,6 +27,7 @@ export function LogoSelector() {
   }
   const [selected, setSelected] = useState(logos.logovert)
   const { route } = useLocation()
+  
 
   return (
     <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 font-sans">
@@ -171,9 +172,9 @@ export function LogoSelector() {
               Découvrez les stages à l'étranger disponibles avec l'Université de Limoges
             </p>
             <button onClick={(e) => {
-                  e.preventDefault()
-                  route("/stages")
-                }} class="bg-bleu-citef hover:bg-bleu-light-citef text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
+              e.preventDefault()
+              route("/stages")
+            }} class="bg-bleu-citef hover:bg-bleu-light-citef text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
               Explorer les stages
             </button>
           </div>

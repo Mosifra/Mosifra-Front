@@ -1,6 +1,6 @@
-import { useState } from "preact/hooks"
-import { useLocation } from "preact-iso"
-import { Lock, Eye, EyeOff, ArrowRight, UserRound } from "lucide-preact"
+import { ArrowRight, Eye, EyeOff, Lock, UserRound } from "lucide-preact";
+import { useLocation } from "preact-iso";
+import { useState } from "preact/hooks";
 
 export function LoginPage() {
   const location = useLocation();
@@ -57,7 +57,7 @@ export function LoginPage() {
         <div class="max-w-md w-full"> 
           <div class="text-center mb-8">
             <div class="w-16 h-16 bg-vert-mosifra rounded-full flex items-center justify-center mx-auto mb-4">
-             <img src="/images/logo_notext.svg"/> 
+              <img src="/images/logo_notext.svg" /> 
             </div>
             <h1 class="text-3xl font-bold text-slate-800 mb-2">Connexion à Mosifra</h1>
             <p class="text-slate-600">Accédez à votre espace de gestion de stages</p>
@@ -71,33 +71,30 @@ export function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setUserType("student")}
-                  class={`px-3 py-2 text-sm rounded-lg border transition-colors ${
-                    userType === "student"
-                      ? "bg-vert-mosifra text-white border-vert-mosifra"
-                      : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
-                  }`}
+                  class={`px-3 py-2 text-sm rounded-lg border transition-colors ${userType === "student"
+                    ? "bg-vert-mosifra text-white border-vert-mosifra"
+                    : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
+                    }`}
                 >
                   Étudiant
                 </button>
                 <button
                   type="button"
                   onClick={() => setUserType("company")}
-                  class={`px-3 py-2 text-sm rounded-lg border transition-colors ${
-                    userType === "company"
-                      ? "bg-vert-mosifra text-white border-vert-mosifra"
-                      : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
-                  }`}
+                  class={`px-3 py-2 text-sm rounded-lg border transition-colors ${userType === "company"
+                    ? "bg-vert-mosifra text-white border-vert-mosifra"
+                    : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
+                    }`}
                 >
                   Entreprise
                 </button>
                 <button
                   type="button"
                   onClick={() => setUserType("university")}
-                  class={`px-3 py-2 text-sm rounded-lg border transition-colors ${
-                    userType === "university"
-                      ? "bg-vert-mosifra text-white border-vert-mosifra"
-                      : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
-                  }`}
+                  class={`px-3 py-2 text-sm rounded-lg border transition-colors ${userType === "university"
+                    ? "bg-vert-mosifra text-white border-vert-mosifra"
+                    : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
+                    }`}
                 >
                   Université
                 </button>
@@ -151,17 +148,16 @@ export function LoginPage() {
               </div>
 
 
-                  <p class="text-red-600 text-sm mt-2 text-center">{errorMessage}</p>
+              <p class="text-red-600 text-sm mt-2 text-center">{errorMessage}</p>
 
  
               <button
                 type="submit"
                 disabled={isLoading} // ✅ bouton désactivé pendant chargement
                 class={`w-full py-3 rounded-lg border-1 transition-colors font-medium flex items-center justify-center gap-2
-                  ${
-                    isLoading
-                      ? "bg-gray-300 text-gray-600 border-gray-300 cursor-not-allowed"
-                      : "bg-beige-mosifra text-vert-mosifra hover:bg-vert-mosifra hover:text-white border-vert-mosifra"
+                  ${isLoading
+                    ? "bg-gray-300 text-gray-600 border-gray-300 cursor-not-allowed"
+                    : "bg-beige-mosifra text-vert-mosifra hover:bg-vert-mosifra hover:text-white border-vert-mosifra"
                   }`}
               >
                 {isLoading ? "Veuillez patienter..." : "Se connecter"}

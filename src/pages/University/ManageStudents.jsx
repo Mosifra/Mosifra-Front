@@ -1,4 +1,4 @@
-import { Plus, Upload, Trash2, ChevronLeft } from "lucide-preact"
+import { ChevronLeft, Plus, Trash2, Upload } from "lucide-preact"
 import { useState } from "preact/hooks"
 
 export default function UniversityClasses() {
@@ -249,11 +249,10 @@ export default function UniversityClasses() {
                   />
                   <label
                     htmlFor={`csv-upload-${classItem.id}`}
-                    className={`flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-vert-mosifra rounded-lg font-semibold cursor-pointer transition ${
-                      uploadingClassId === classItem.id
+                    className={`flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-vert-mosifra rounded-lg font-semibold cursor-pointer transition ${uploadingClassId === classItem.id
                         ? "bg-gray-100 text-gray-500 cursor-not-allowed"
                         : "text-vert-mosifra hover:bg-beige-mosifra"
-                    }`}
+                      }`}
                   >
                     <Upload size={18} />
                     {uploadingClassId === classItem.id ? "Traitement..." : "Importer CSV"}

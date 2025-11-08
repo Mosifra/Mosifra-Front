@@ -1,6 +1,6 @@
-import { useState, useEffect } from "preact/hooks"
+import { BookOpen, Send, Upload, X } from "lucide-preact"
 import { useLocation } from "preact-iso"
-import { Send, Upload, X, BookOpen } from "lucide-preact"
+import { useEffect, useState } from "preact/hooks"
 import { getUserTypeFromCookie } from "../utils"
 
 export default function Internships() {

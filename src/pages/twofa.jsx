@@ -1,6 +1,6 @@
-import { useState } from "preact/hooks";
+import { ArrowRight, Binary } from "lucide-preact";
 import { useLocation } from "preact-iso";
-import { Binary, ArrowRight } from "lucide-preact";
+import { useState } from "preact/hooks";
 
 export function Twofa() {
   const location = useLocation();
