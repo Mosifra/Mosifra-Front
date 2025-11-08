@@ -1,4 +1,4 @@
-FROM oven/bun:1.1 AS builder
+FROM oven/bun:latest AS builder
 
 WORKDIR /app
 COPY package.json bun.lock ./
@@ -18,9 +18,9 @@ RUN echo 'server { \
     root /usr/share/nginx/html; \
     index index.html; \
     location / { \
-        try_files $uri $uri/ /index.html; \
+    try_files $uri $uri/ /index.html; \
     } \
-}' > /etc/nginx/conf.d/default.conf
+    }' > /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
