@@ -10,23 +10,8 @@ export default function UniversityClasses() {
       students: 45,
       lastUpload: "2024-11-03",
       studentList: [
-        { id: 1, name: "Jean Dupont", email: "jean.dupont@uni.fr", matricule: "INF2021001" },
-        { id: 2, name: "Marie Martin", email: "marie.martin@uni.fr", matricule: "INF2021002" },
-        { id: 3, name: "Pierre Bernard", email: "pierre.bernard@uni.fr", matricule: "INF2021003" },
-        { id: 4, name: "Sophie Durand", email: "sophie.durand@uni.fr", matricule: "INF2021004" },
-        { id: 5, name: "Luc Laurent", email: "luc.laurent@uni.fr", matricule: "INF2021005" },
-      ],
-    },
-    {
-      id: 2,
-      name: "Génie Civil - M1",
-      year: "2024-2025",
-      students: 32,
-      lastUpload: "2024-10-15",
-      studentList: [
-        { id: 1, name: "Alice Moreau", email: "alice.moreau@uni.fr", matricule: "GEO2021001" },
-        { id: 2, name: "Thomas Garnier", email: "thomas.garnier@uni.fr", matricule: "GEO2021002" },
-        { id: 3, name: "Emma Rousseau", email: "emma.rousseau@uni.fr", matricule: "GEO2021003" },
+        { id: 1, name: "Dupont", firstname: "Jean", email: "jean.dupont@uni.fr" },
+        { id: 2, name: "Zaglouk", firstname: "Hubert", email: "mafemmemetrompe@yahoo.com" },
       ],
     },
   ])
@@ -119,16 +104,16 @@ export default function UniversityClasses() {
                     <thead>
                       <tr className="border-b-2 border-gray-200">
                         <th className="px-4 py-3 text-left font-semibold text-gray-700">Nom</th>
-                        <th className="px-4 py-3 text-left font-semibold text-gray-700">Email</th>
-                        <th className="px-4 py-3 text-left font-semibold text-gray-700">Matricule</th>
+                        <th className="px-4 py-3 text-left font-semibold text-gray-700">Prénom</th>
+                        <th className="px-4 py-3 text-left font-semibold text-gray-700">Courriel</th>
                       </tr>
                     </thead>
                     <tbody>
                       {selectedClass.studentList.map((student) => (
                         <tr key={student.id} className="border-b border-gray-100 hover:bg-gray-50 transition">
                           <td className="px-4 py-3 text-gray-800">{student.name}</td>
-                          <td className="px-4 py-3 text-gray-600">{student.email}</td>
-                          <td className="px-4 py-3 text-gray-600 font-mono">{student.matricule}</td>
+                          <td className="px-4 py-3 text-gray-600">{student.firstname}</td>
+                          <td className="px-4 py-3 text-gray-600 font-mono">{student.email}</td>
                         </tr>
                       ))}
                     </tbody>
