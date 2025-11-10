@@ -30,10 +30,10 @@ export function NotFound() {
             Retour à l'accueil
           </a>
           <a
-            href="/stages"
+            href="/internships"
             onClick={(e) => {
               e.preventDefault()
-              route("/stages")
+              route("/internships")
             }}
             className="inline-flex items-center px-6 py-3 border-2 border-vert-mosifra text-vert-mosifra font-semibold rounded-lg hover:bg-vert-mosifra hover:text-white transition-all duration-300 transform hover:scale-105"
           >
