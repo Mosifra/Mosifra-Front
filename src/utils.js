@@ -1,23 +1,20 @@
 //TO FIX HERE AND/OR IN HOME/HEADER
 export async function getUserTypeFromCookie() {
-  const cookies = document.cookie.split("; ").reduce((acc, c) => {
-    const [k, v] = c.split("=");
-    acc[k] = v;
-    return acc;
-  }, {});
+  const jwt = getCookie("session_jwt");
 
-  const sessionId = cookies.session_id;
-  const userType = cookies.user_type;
+  if (!jwt) return null;
 
-  if (!sessionId) return null;
+  const getUserTypePayload = new URLSearchParams();
+  getUserTypePayload.append("jwt", jwt)
 
   try {
-    const response = await fetch("https://localhost:8000/check_session", {
-      method: "GET",
+    const response = await fetch("http://localhost:8000/user/get_user_type", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
+      body: getUserTypePayload.toString(),
     });
 
     if (!response.ok) {
@@ -31,6 +28,8 @@ export async function getUserTypeFromCookie() {
       return null;
     }
 
+    const userType = response.userType
+
     return userType || null;
   } catch (err) {
     console.error("Erreur lors de la vérification de la session :", err);
@@ -38,8 +37,6 @@ export async function getUserTypeFromCookie() {
     return null;
   }
 }
-
-
 
 export function getCookie(name) {
   const cookies = document.cookie.split("; ").reduce((acc, c) => {
@@ -54,7 +51,7 @@ function clearSessionCookies() {
   const paths = ["/", "/student", "/company", "/university", "/login", "/account"];
   const domains = [window.location.hostname, `.${window.location.hostname}`];
 
-  const names = ["session_id", "user_type"];
+  const names = ["session_jwt"];
 
   for (const name of names) {
     document.cookie = `${name}=; Max-Age=0; path=/;`;
