@@ -8,6 +8,7 @@ export default function Internships() {
   const [internships, setInternships] = useState([])
   const [loading, setLoading] = useState(true)
   const [userType, setUserType] = useState(null)
+  const [loadingUserType, setLoadingUserType] = useState(true)
   const [selectedInternship, setSelectedInternship] = useState(null)
   const [showApplicationModal, setShowApplicationModal] = useState(false)
   const [applicationData, setApplicationData] = useState({
@@ -18,7 +19,12 @@ export default function Internships() {
 
   useEffect(() => {
 
-    setUserType(getUserTypeFromCookie())
+    const fetchUserType = async () => {
+      const type = await getUserTypeFromCookie()
+      setUserType(type)
+      setLoadingUserType(false)
+    }
+    fetchUserType()
 
     const mockInternships = [
       {
@@ -171,7 +177,11 @@ export default function Internships() {
                   </div>
                 </div>
 
-                {userType === "student" ? (
+                {loadingUserType ? (
+                  <div className="w-full px-4 py-3 bg-gray-200 text-gray-600 rounded-lg text-center font-semibold cursor-not-allowed">
+                    Consultation uniquement
+                  </div>
+                ) : userType === "student" ? (
                   <button
                     onClick={() => handleApplyClick(internship)}
                     className="w-full px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition flex items-center justify-center gap-2"
