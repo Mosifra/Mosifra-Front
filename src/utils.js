@@ -1,5 +1,13 @@
 //TO FIX HERE AND/OR IN HOME/HEADER
 export async function getUserTypeFromCookie() {
+  const jwt = getCookie("jwt");
+
+  if (!jwt) return null;
+
+  const connectionPayload = {jwt: jwt}
+
+  try {
+    const response = await fetch("http://localhost:8000/user/user_type", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,7 +28,11 @@ export async function getUserTypeFromCookie() {
       return null;
     }
 
+<<<<<<< HEAD
+    const userType = response.userType
+=======
     const userType = data.user_type;
+>>>>>>> 6fb9719 (WIP refacto to match api and wip jwt)
 
     return userType || null;
   } catch (err) {
@@ -30,6 +42,8 @@ export async function getUserTypeFromCookie() {
   }
 }
 
+<<<<<<< HEAD
+=======
 export async function checkSession() {
   const jwt = getCookie("jwt");
   const connectionPayload = {jwt: jwt};
@@ -64,6 +78,7 @@ export async function checkSession() {
   }
 };
 
+>>>>>>> 6fb9719 (WIP refacto to match api and wip jwt)
 export function getCookie(name) {
   const cookies = document.cookie.split("; ").reduce((acc, c) => {
     const [k, v] = c.split("=")
@@ -77,7 +92,11 @@ function clearSessionCookies() {
   const paths = ["/", "/student", "/company", "/university", "/login", "/account"];
   const domains = [window.location.hostname, `.${window.location.hostname}`];
 
+<<<<<<< HEAD
+  const names = ["session_jwt"];
+=======
   const names = ["jwt"];
+>>>>>>> 6fb9719 (WIP refacto to match api and wip jwt)
 
   for (const name of names) {
     document.cookie = `${name}=; Max-Age=0; path=/;`;
