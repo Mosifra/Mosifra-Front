@@ -16,18 +16,16 @@ export function LoginPage() {
     setIsLoading(true);
     e.preventDefault();
 
-    const connectionPayload = new URLSearchParams();
-    connectionPayload.append('login', login);
-    connectionPayload.append('password', password);
-    connectionPayload.append('remember_me', rememberMe.toString());
+    const connectionPayload = {login: login, password: password, remember_me: rememberMe, user_type: userType};
+    
 
     try {
-      const response = await fetch(`http://localhost:8000/login_${userType}`, {
+      const response = await fetch(`http://localhost:8000/login`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
-        body: connectionPayload.toString(),
+        body: JSON.stringify(connectionPayload),
       });
 
       if (!response.ok) {

@@ -21,19 +21,14 @@ export function Twofa() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const connectionPayload = new URLSearchParams();
-    connectionPayload.append("code", code);
-    connectionPayload.append("transaction_id", transactionId);
-    connectionPayload.append("user_type", userType);
-    connectionPayload.append("remember_me", rememberMe);
-
+    const connectionPayload = {code: code, transaction_id: transactionId, user_type: userType, remember_me: remember};
     try {
       const response = await fetch("http://localhost:8000/twofa", {
         method: "POST",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/json",
         },
-        body: connectionPayload.toString(),
+        body: JSON.stringify(connectionPayload),
         credentials: "include"
       });
 
@@ -44,9 +39,8 @@ export function Twofa() {
       const data = await response.json();
       console.log("Réponse API", data);
 
-      if (data.session_id !== null) {
-        document.cookie = `session_id=${data.session_id}; path=/; max-age=${ttl};`;
-        document.cookie = `user_type=${userType}; path=/; max-age=${ttl};`;
+      if (data.jwt !== null) {
+        document.cookie = `jwt=${data.jwt}; path=/; max-age=${ttl};`;
 
         window.dispatchEvent(new Event("userTypeUpdated"));
 
