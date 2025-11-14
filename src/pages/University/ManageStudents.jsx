@@ -176,7 +176,7 @@ export default function UniversityClasses() {
 
           <button
             onClick={() => setShowAddForm(!showAddForm)}
-            className="px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:text-vert-mosifra hover:bg-beige-mosifra transition flex items-center gap-2"
+            className="px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:text-vert-mosifra hover:border-vert-mosifra hover:border-1 hover:bg-beige-mosifra transition flex items-center gap-2"
           >
             <Plus size={20} />
             Nouvelle classe
