@@ -1,5 +1,6 @@
 import { ChevronLeft, Plus, Trash2, Upload } from "lucide-preact"
 import { useState } from "preact/hooks"
+import { getCookie } from "../../utils"
 
 export default function UniversityClasses() {
   const [classes, setClasses] = useState([])
@@ -20,32 +21,48 @@ export default function UniversityClasses() {
     info: "Informatique",
   }
 
-  const handleAddClass = () => {
+  const handleAddClass = async () => {
     if (newName.trim()) {
-      const newClass = {
+      const payload = {
         name: newName,
         course_type: newCourseType,
         date_internship_start: newInternshipStart,
         date_internship_end: newInternshipEnd,
         maximum_internship_length: Number(newMaxLength),
         minimum_internship_length: Number(newMinLength),
-        //WIP
-        students: 0,
-        lastUpload: null,
-        studentList: [],
+        jwt: getCookie("jwt"),
       }
 
-      setClasses([...classes, newClass])
+      try {
+        const response = await fetch("/university/create_class", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        })
 
-      setNewName("")
-      setNewCourseType("")
-      setNewInternshipStart("")
-      setNewInternshipEnd("")
-      setNewMaxLength("")
-      setNewMinLength("")
-      setShowAddForm(false)
+        const result = await response.json()
+
+        if (!result.success) {
+          console.error("Échec de la création de la classe")
+        }
+
+        setNewName("")
+        setNewCourseType("")
+        setNewInternshipStart("")
+        setNewInternshipEnd("")
+        setNewMaxLength("")
+        setNewMinLength("")
+        setShowAddForm(false)
+
+      } catch (error) {
+        console.error("Erreur lors de l'appel backend :", error)
+      }
     }
   }
+
+
 
   const handleDeleteClass = (id) => {
     //TODO
@@ -147,14 +164,13 @@ export default function UniversityClasses() {
     )
   }
 
-  // CLASS LIST + FORM
   return (
     <main className="min-h-screen bg-beige-mosifra">
       <div className="max-w-6xl mx-auto px-4 py-16">
 
         <div className="mb-8 flex justify-between items-center">
           <div>
-            <h1 className="text-5xl font-bold text-vert-mosifra mb-2">Gestion des Classes</h1>
+            <h1 className="text-5xl font-bold text-vert-mosifra mb-2">Gestion des classes</h1>
             <p className="text-xl text-gray-700">Gérez vos classes et importez vos listes d'étudiants</p>
           </div>
 
