@@ -23,7 +23,7 @@ export function Twofa() {
 
     const connectionPayload = {code: code, transaction_id: transactionId, user_type: userType, remember_me: remember};
     try {
-      const response = await fetch("http://localhost:8000/twofa", {
+      const response = await fetch("http://localhost:8000/auth/twofa", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

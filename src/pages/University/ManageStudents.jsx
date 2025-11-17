@@ -34,7 +34,7 @@ export default function UniversityClasses() {
       }
 
       try {
-        const response = await fetch("/university/create_class", {
+        const response = await fetch("/create/class", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
