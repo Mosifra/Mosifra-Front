@@ -8,7 +8,7 @@ export default function StudentAccount() {
     email: "victor.maguer@etsmaguer.com",
     phone: "+33 6 12 34 56 78",
     university: "Université de Limoges",
-    major: "BUT3 Informatique",
+    className: "BUT3 Informatique",
     cv: null,
     cvName: "Cv_Maguer_Victor.pdf",
   })
@@ -65,7 +65,7 @@ export default function StudentAccount() {
       formData.append("email", editData.email)
       formData.append("phone", editData.phone)
       formData.append("university", editData.university)
-      formData.append("major", editData.major)
+      formData.append("className", editData.className)
 
       if (editData.cv) {
         formData.append("cv", editData.cv)
@@ -156,7 +156,7 @@ export default function StudentAccount() {
                         name="email"
                         value={editData.email}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-vert-mosifra focus:outline-none"
+                        className="w-full text-black px-4 py-2 border border-gray-300 rounded-lg focus:border-vert-mosifra focus:outline-none"
                       />
                     ) : (
                       <p className="px-4 py-2 bg-gray-50 rounded-lg text-gray-700 flex items-center gap-2">
@@ -174,7 +174,7 @@ export default function StudentAccount() {
                         name="phone"
                         value={editData.phone}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-vert-mosifra focus:outline-none"
+                        className="w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:border-vert-mosifra focus:outline-none"
                       />
                     ) : (
                       <p className="px-4 py-2 bg-gray-50 rounded-lg text-gray-700 flex items-center gap-2">
@@ -192,7 +192,7 @@ export default function StudentAccount() {
                         name="university"
                         value={editData.university}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-vert-mosifra focus:outline-none"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black focus:border-vert-mosifra focus:outline-none"
                       />
                     ) : (
                       <p className="px-4 py-2 bg-gray-50 rounded-lg text-gray-700">{studentData.university}</p>
@@ -204,13 +204,13 @@ export default function StudentAccount() {
                     {isEditing ? (
                       <input
                         type="text"
-                        name="major"
-                        value={editData.major}
+                        name="className"
+                        value={editData.className}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-vert-mosifra focus:outline-none"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-vert-mosifra focus:outline-none text-black"
                       />
                     ) : (
-                      <p className="px-4 py-2 bg-gray-50 rounded-lg text-gray-700">{studentData.major}</p>
+                      <p className="px-4 py-2 bg-gray-50 rounded-lg text-gray-700">{studentData.className}</p>
                     )}
                   </div>
                 </div>
