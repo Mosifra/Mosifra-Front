@@ -14,6 +14,7 @@ import Applications from './pages/Student/Applications.jsx';
 import { Twofa } from './pages/twofa.jsx';
 import ManageStudents from './pages/University/ManageStudents.jsx';
 import { ProtectedRouteByType } from './components/ProtectedRouteByType.jsx';
+import { Footer } from './components/footer.jsx';
 
 export function App() {
 	return (
@@ -34,6 +35,7 @@ export function App() {
 						<Route default component={NotFound} />
 					</Router>
 				</main> 
+				<Footer />
 			</LocationProvider>
 		</SessionChecker>
 	);
