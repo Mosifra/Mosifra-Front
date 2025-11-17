@@ -236,21 +236,21 @@ export default function UniversityClasses() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Durée maximale (semaines)</label>
-                <input
-                  type="number"
-                  value={newMaxLength}
-                  onChange={(e) => setNewMaxLength(e.target.value)}
-                  className="w-full px-4 text-black py-2 border border-gray-300 rounded-lg focus:border-vert-mosifra"
-                />
-              </div>
-
-              <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Durée minimale (semaines)</label>
                 <input
                   type="number"
                   value={newMinLength}
                   onChange={(e) => setNewMinLength(e.target.value)}
+                  className="w-full px-4 text-black py-2 border border-gray-300 rounded-lg focus:border-vert-mosifra"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Durée maximale (semaines)</label>
+                <input
+                  type="number"
+                  value={newMaxLength}
+                  onChange={(e) => setNewMaxLength(e.target.value)}
                   className="w-full px-4 text-black py-2 border border-gray-300 rounded-lg focus:border-vert-mosifra"
                 />
               </div>
