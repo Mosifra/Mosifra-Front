@@ -13,6 +13,7 @@ import StudentAccount from './pages/Student/account.jsx';
 import Applications from './pages/Student/Applications.jsx';
 import { Twofa } from './pages/twofa.jsx';
 import ManageStudents from './pages/University/ManageStudents.jsx';
+import { ProtectedRouteByType } from './components/ProtectedRouteByType.jsx';
 
 export function App() {
 	return (
@@ -24,12 +25,12 @@ export function App() {
 						<Route path="/" component={HomeRouter} />
 						<Route path="/login" component={LoginPage} />
 						<Route path="/twofa" component={Twofa} />
-						<Route path="/internships" component={Internships} />
-						<Route path="/student/account" component={StudentAccount} />
-						<Route path="/student/applications" component={Applications} />
-						<Route path="/company/managecandidates" component={ManageCandidates} />
-						<Route path="/company/submitinternship" component={SubmitInternship} />
-						<Route path="/university/students" component={ManageStudents} />
+						<ProtectedRouteByType path="/internships" component={Internships} allowedTypes={['student', 'university']} />
+						<ProtectedRouteByType path="/student/account" component={StudentAccount} allowedTypes={['student']} />
+						<ProtectedRouteByType path="/student/applications" component={Applications} allowedTypes={['student']} />
+						<ProtectedRouteByType path="/company/managecandidates" component={ManageCandidates} allowedTypes={['company']} />
+						<ProtectedRouteByType path="/company/submitinternship" component={SubmitInternship} allowedTypes={['company']} />
+						<ProtectedRouteByType path="/university/students" component={ManageStudents} allowedTypes={['university']} />
 						<Route default component={NotFound} />
 					</Router>
 				</main> 
