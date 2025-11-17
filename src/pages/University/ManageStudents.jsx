@@ -34,7 +34,7 @@ export default function UniversityClasses() {
       }
 
       try {
-        const response = await fetch("/create/class", {
+        const response = await fetch("http://localhost:8000/create/class", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -68,23 +68,39 @@ export default function UniversityClasses() {
     //TODO
   }
 
-  const handleCSVUpload = (classId, event) => {
-    const file = event.target.files?.[0]
-    if (file && file.type === "text/csv") {
-      setUploadingClassId(classId)
+  const handleCSVUpload = async (classId, event) => {
+    const file = event.target.files?.[0];
+    if (!file || file.type !== "text/csv") return;
 
-      setTimeout(() => {
-        const updatedClasses = classes.map((c) =>
-          c.id === classId
-            ? { ...c, lastUpload: new Date().toISOString().split("T")[0], students: Math.floor(Math.random() * 100) }
-            : c
-        )
-        setClasses(updatedClasses)
-        setUploadingClassId(null)
-        alert("CSV importé avec succès !")
-      }, 1000)
+    try {
+      setUploadingClassId(classId);
+
+      const formData = new FormData();
+      formData.append("csv", file);
+      formData.append("class", String(classId));
+
+      const response = await fetch("http://localhost:8000/create/students", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        alert("Erreur : le CSV n'a pas pu être importé.");
+        setUploadingClassId(null);
+        return;
+      }
+
+      alert("CSV importé avec succès !");
+      window.location.reload();
+
+    } catch (err) {
+      console.error("Erreur lors de l’envoi du fichier CSV :", err);
+      setUploadingClassId(null);
     }
-  }
+  };
+
 
   const selectedClass = classes.find((c) => c.id === selectedClassId)
 
