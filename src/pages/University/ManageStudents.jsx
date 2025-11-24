@@ -136,8 +136,38 @@ export default function UniversityClasses() {
     }
   };
 
-  const handleDeleteClass = (id) => {
-    //TODO
+  const handleDeleteClass = async (id) => {
+    const confirmed = window.confirm("Avez-vous la certitude de vouloir supprimer cette classe ? Cette action est irréversible.")
+    if (!confirmed) return;
+    
+    const headers = new Headers();
+    const jwt = getCookie("jwt");
+    headers.append("Authorization", `Bearer ${jwt}`);
+    headers.append("Content-Type", "application/json");
+    const payload = {
+      class_id: `${id}`
+    };
+    try {
+      const response = await fetch("http://localhost:8000/courses/class", {
+        method: 'DELETE',
+        headers: headers,
+        body: JSON.stringify(payload)
+      })
+
+      if (!response.ok) {
+        throw new Error("Erreur lors de la suppression");
+      }
+
+      const data = await response.json();
+      if (!data.success) {
+        throw new Error("Erreur lors de la suppression");
+      }
+
+      window.location.reload();
+
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const handleCSVUpload = async (classId, event) => {
