@@ -1,17 +1,17 @@
 export async function getUserTypeFromCookie() {
   const jwt = getCookie("jwt");
+  const headers = new Headers();
+
+  headers.append("Authorization", `Bearer ${jwt}`);
 
   if (!jwt) return null;
 
-  const connectionPayload = {jwt: jwt};
-
+  
   try {
     const response = await fetch("http://localhost:8000/user/user_type", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(connectionPayload),
+      method: "GET",
+      headers: headers,
+      redirect: "follow",
       credentials: "include",
     });
 
@@ -33,15 +33,14 @@ export async function getUserTypeFromCookie() {
 
 export async function checkSession() {
   const jwt = getCookie("jwt");
-  const connectionPayload = {jwt: jwt};
+  const headers = new Headers();
+  headers.append("Authorization", `Bearer ${jwt}`);
 
   try {
-    const response = await fetch("http://localhost:8000/check_session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(connectionPayload),
+    const response = await fetch("http://localhost:8000/auth/check_session", {
+      method: "GET",
+      headers: headers,
+      redirect: "follow",
       credentials: "include",
     });
 
@@ -75,7 +74,6 @@ export function getCookie(name) {
 }
 
 function clearSessionCookies() {
-  console.log("Gérard larcher");
   const paths = ["/", "/student", "/company", "/university", "/login", "/account"];
   const domains = [window.location.hostname, `.${window.location.hostname}`];
 

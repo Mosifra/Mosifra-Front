@@ -1,5 +1,5 @@
 import { ChevronLeft, Plus, Trash2, Upload } from "lucide-preact"
-import { useState } from "preact/hooks"
+import { useEffect, useState } from "preact/hooks"
 import { getCookie } from "../../utils"
 
 export default function UniversityClasses() {
@@ -20,6 +20,28 @@ export default function UniversityClasses() {
   const COURSE_TYPE_LABELS = {
     info: "Informatique",
   }
+  
+  useEffect(() => {
+    const fetchClasses = async () => {
+      const headers = new Headers();
+      const jwt = getCookie("jwt");
+      headers.append("Authorization", `Bearer ${jwt}`);
+      const options = {
+        method: "GET",
+        headers: headers,
+        redirect: "follow"
+      };
+
+      try {
+        const response = await fetch("http://localhost:8000/courses/classes", options);
+        const data = await response.json();
+        setClasses(data.classes);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchClasses();
+  }, [])
 
   const handleAddClass = async () => {
     if (newName.trim()) {
@@ -30,13 +52,14 @@ export default function UniversityClasses() {
         date_internship_end: newInternshipEnd,
         maximum_internship_length: Number(newMaxLength),
         minimum_internship_length: Number(newMinLength),
-        jwt: getCookie("jwt"),
       }
 
       try {
+        const jwt = getCookie("jwt");
         const response = await fetch("http://localhost:8000/create/class", {
           method: "POST",
           headers: {
+            "Authorization": `Bearer ${jwt}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(payload),
@@ -78,8 +101,12 @@ export default function UniversityClasses() {
       const formData = new FormData();
       formData.append("csv", file);
       formData.append("class", String(classId));
+      const jwt = getCookie("jwt");
 
       const response = await fetch("http://localhost:8000/create/students", {
+        headers: {
+          "Authorization": `Bearer ${jwt}`,
+        },
         method: "POST",
         body: formData,
       });
