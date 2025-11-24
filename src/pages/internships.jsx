@@ -139,7 +139,7 @@ export default function Internships() {
           {internships.map((internship) => (
             <div
               key={internship.id}
-              className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition"
+              className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300"
             >
               <div className="p-6">
                 <div className="flex items-start justify-between mb-3">
@@ -184,7 +184,7 @@ export default function Internships() {
                 ) : userType === "student" ? (
                   <button
                     onClick={() => handleApplyClick(internship)}
-                    className="w-full px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition flex items-center justify-center gap-2"
+                    className="w-full px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Send size={18} />
                     Postuler
@@ -196,7 +196,7 @@ export default function Internships() {
                 ) : (
                   <button
                     onClick={() => location.route("/login")}
-                    className="w-full px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition"
+                    className="w-full px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
                   >
                     Se connecter
                   </button>
@@ -269,7 +269,7 @@ export default function Internships() {
                     />
                     <label
                       htmlFor="cv-upload"
-                      className="flex-1 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-vert-mosifra transition flex items-center justify-center gap-2 text-gray-600 hover:text-vert-mosifra"
+                      className="flex-1 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-vert-mosifra transition-all duration-300 flex items-center justify-center gap-2 text-gray-600 hover:text-vert-mosifra"
                     >
                       <Upload size={20} />
                       {applicationData.cv ? applicationData.cv.name : "Cliquez pour télécharger"}
@@ -278,7 +278,7 @@ export default function Internships() {
                       <button
                         type="button"
                         onClick={() => setApplicationData({ ...applicationData, cv: null })}
-                        className="px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition"
+                        className="px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-all duration-300"
                       >
                         <X size={18} />
                       </button>
@@ -290,7 +290,7 @@ export default function Internships() {
                   <button
                     type="submit"
                     disabled={submitting || !applicationData.motivationLetter.trim()}
-                    className="flex-1 px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="flex-1 px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     <Send size={18} />
                     {submitting ? "Envoi en cours..." : "Envoyer la candidature"}
@@ -301,7 +301,7 @@ export default function Internships() {
                       setShowApplicationModal(false)
                       setApplicationData({ motivationLetter: "", cv: null })
                     }}
-                    className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition"
+                    className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-all duration-300"
                   >
                     Annuler
                   </button>

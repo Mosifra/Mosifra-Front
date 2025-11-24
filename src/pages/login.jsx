@@ -69,7 +69,7 @@ export function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setUserType("student")}
-                  class={`px-3 py-2 text-sm rounded-lg border transition-colors ${userType === "student"
+                  class={`px-3 py-2 text-sm rounded-lg border transition-colors duration-300 ${userType === "student"
                     ? "bg-vert-mosifra text-white border-vert-mosifra"
                     : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
                     }`}
@@ -79,7 +79,7 @@ export function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setUserType("company")}
-                  class={`px-3 py-2 text-sm rounded-lg border transition-colors ${userType === "company"
+                  class={`px-3 py-2 text-sm rounded-lg border transition-colors duration-300 ${userType === "company"
                     ? "bg-vert-mosifra text-white border-vert-mosifra"
                     : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
                     }`}
@@ -89,7 +89,7 @@ export function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setUserType("university")}
-                  class={`px-3 py-2 text-sm rounded-lg border transition-colors ${userType === "university"
+                  class={`px-3 py-2 text-sm rounded-lg border transition-colors duration-300 ${userType === "university"
                     ? "bg-vert-mosifra text-white border-vert-mosifra"
                     : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
                     }`}
@@ -151,8 +151,8 @@ export function LoginPage() {
  
               <button
                 type="submit"
-                disabled={isLoading} // ✅ bouton désactivé pendant chargement
-                class={`w-full py-3 rounded-lg border-1 transition-colors font-medium flex items-center justify-center gap-2
+                disabled={isLoading}
+                class={`w-full py-3 rounded-lg border-1 transition-colors duration-300 font-medium flex items-center justify-center gap-2
                   ${isLoading
                     ? "bg-gray-300 text-gray-600 border-gray-300 cursor-not-allowed"
                     : "bg-beige-mosifra text-vert-mosifra hover:bg-vert-mosifra hover:text-white border-vert-mosifra"

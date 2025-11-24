@@ -133,7 +133,7 @@ export default function Applications() {
         <div className="flex flex-wrap gap-3 mb-8">
           <button
             onClick={() => setFilter("all")}
-            className={`px-6 py-2 rounded-lg font-semibold transition ${
+            className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${
               filter === "all"
                 ? "bg-vert-mosifra text-white"
                 : "bg-white text-vert-mosifra border border-vert-mosifra hover:bg-beige-mosifra"
@@ -143,7 +143,7 @@ export default function Applications() {
           </button>
           <button
             onClick={() => setFilter("accepted")}
-            className={`px-6 py-2 rounded-lg font-semibold transition ${
+            className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${
               filter === "accepted"
                 ? "bg-green-600 text-white"
                 : "bg-white text-green-600 border border-green-300 hover:bg-green-50"
@@ -153,7 +153,7 @@ export default function Applications() {
           </button>
           <button
             onClick={() => setFilter("pending")}
-            className={`px-6 py-2 rounded-lg font-semibold transition ${
+            className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${
               filter === "pending"
                 ? "bg-yellow-600 text-white"
                 : "bg-white text-yellow-600 border border-yellow-300 hover:bg-yellow-50"
@@ -163,7 +163,7 @@ export default function Applications() {
           </button>
           <button
             onClick={() => setFilter("rejected")}
-            className={`px-6 py-2 rounded-lg font-semibold transition ${
+            className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${
               filter === "rejected"
                 ? "bg-red-600 text-white"
                 : "bg-white text-red-600 border border-red-300 hover:bg-red-50"
@@ -180,7 +180,7 @@ export default function Applications() {
               return (
                 <div
                   key={application.id}
-                  className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition"
+                  className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-all duration-300"
                 >
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div className="flex-1">
@@ -214,7 +214,7 @@ export default function Applications() {
                         </p>
                       )}
 
-                      <button className="mt-2 px-4 py-2 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition flex items-center gap-2">
+                      <button className="mt-2 px-4 py-2 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 flex items-center gap-2">
                         Détails
                         <ArrowRight size={16} />
                       </button>
@@ -229,7 +229,7 @@ export default function Applications() {
               <p className="text-xl text-gray-600 mb-4">Aucune candidature trouvée</p>
               <button
                 onClick={() => location.route("/internships")}
-                className="px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition"
+                className="px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
               >
                 Parcourir les offres
               </button>

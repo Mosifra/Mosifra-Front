@@ -83,7 +83,7 @@ export default function ManageCandidates() {
                   <div
                     key={candidate.id}
                     onClick={() => setSelectedCandidate(candidate)}
-                    className={`px-6 py-4 border-b border-gray-300 cursor-pointer hover:bg-gray-50 transition ${
+                    className={`px-6 py-4 border-b border-gray-300 cursor-pointer hover:bg-gray-50 transition-all duration-300 ${
                       selectedCandidate.id === candidate.id ? "bg-gray-50" : ""
                     }`}
                   >
@@ -133,13 +133,13 @@ export default function ManageCandidates() {
                 <div className="space-y-2 pt-6">
                   <button
                     onClick={() => handleStatusChange("accepted")}
-                    className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition text-sm font-medium"
+                    className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-all duration-300 text-sm font-medium"
                   >
                     Accepter
                   </button>
                   <button
                     onClick={() => handleStatusChange("rejected")}
-                    className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition text-sm font-medium"
+                    className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-all duration-300 text-sm font-medium"
                   >
                     Rejeter
                   </button>
@@ -177,7 +177,7 @@ export default function ManageCandidates() {
                 />
                 <button
                   onClick={handleSendMessage}
-                  className="bg-vert-mosifra text-white px-6 py-2 rounded-lg hover:opacity-90 transition font-medium"
+                  className="bg-vert-mosifra text-white px-6 py-2 rounded-lg hover:opacity-90 transition-all duration-300 font-medium"
                 >
                   Envoyer
                 </button>
