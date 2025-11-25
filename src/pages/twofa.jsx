@@ -91,7 +91,7 @@ export function Twofa() {
 
               <button
                 type="submit"
-                class="w-full bg-beige-mosifra text-vert-mosifra py-3 rounded-lg hover:bg-vert-mosifra hover:text-white border border-vert-mosifra transition-colors duration-300 font-medium flex items-center justify-center gap-2"
+                class="w-full bg-beige-mosifra text-vert-mosifra py-3 rounded-lg hover:bg-vert-mosifra hover:text-white border border-vert-mosifra transition-all duration-300 transform font-medium flex items-center justify-center gap-2"
               >
                 Valider
                 <ArrowRight class="h-5 w-5" />

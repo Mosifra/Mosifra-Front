@@ -236,7 +236,7 @@ export default function UniversityClasses() {
         <div className="max-w-6xl mx-auto px-4 py-16">
           <button
             onClick={() => setSelectedClassId(null)}
-            className="flex items-center gap-2 mb-8 text-vert-mosifra font-semibold hover:opacity-70 transition-colors duration-300"
+            className="flex items-center gap-2 mb-8 text-vert-mosifra font-semibold hover:opacity-70 transition-all duration-300 transform"
           >
             <ChevronLeft size={20} />
             Retour aux classes
@@ -315,7 +315,7 @@ export default function UniversityClasses() {
                     {selectedClass.studentList.map((student) => (
                       <tr
                         key={student.id}
-                        className="border-b border-gray-100 hover:bg-gray-50 transition-colors duration-300"
+                        className="border-b border-gray-100 hover:bg-gray-50 transition-all transform duration-300"
                       >
                         <td className="px-4 py-3 text-gray-800">
                           {student.last_name}
@@ -357,7 +357,7 @@ export default function UniversityClasses() {
 
           <button
             onClick={() => setShowAddForm(!showAddForm)}
-            className="px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:text-vert-mosifra hover:border-vert-mosifra hover:border-1 hover:bg-beige-mosifra transition-all duration-300 flex items-center gap-2"
+            className="px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:text-vert-mosifra hover:border-vert-mosifra hover:border-1 hover:bg-beige-mosifra transition-all duration-300 transform flex items-center gap-2"
           >
             <Plus size={20} />
             Nouvelle classe
@@ -511,7 +511,7 @@ export default function UniversityClasses() {
 
                 <label
                   htmlFor={`csv-upload-${classItem.id}`}
-                  className={`flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-vert-mosifra rounded-lg font-semibold cursor-pointer transition-colors duration-300 ${
+                  className={`flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-vert-mosifra rounded-lg font-semibold cursor-pointer transition-all transform duration-300 ${
                     uploadingClassId === classItem.id
                       ? "bg-gray-100 text-gray-500 cursor-not-allowed"
                       : "text-vert-mosifra hover:bg-beige-mosifra"

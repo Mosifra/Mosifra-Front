@@ -18,7 +18,7 @@ export default function Home() {
 
             <a href="/login"
               onClick={() => route("/login")}
-              class="inline-flex items-center gap-3 bg-beige-mosifra text-vert-mosifra px-8 py-4 border-1 border-vert-mosifra rounded-lg font-semibold hover:bg-vert-mosifra hover:text-white transition-colors duration-300 text-lg shadow-lg hover:shadow-xl"
+              class="inline-flex items-center gap-3 bg-beige-mosifra text-vert-mosifra px-8 py-4 border-1 border-vert-mosifra rounded-lg font-semibold hover:bg-vert-mosifra hover:text-white transition-all transform duration-300 text-lg shadow-lg hover:shadow-xl"
             >
               <LogIn class="h-5 w-5" />
               Se connecter

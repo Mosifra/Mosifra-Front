@@ -13,8 +13,7 @@ export function NotFound() {
           </h1>
           <h2 className="text-3xl font-semibold text-slate-800 mb-4">Page non trouvée</h2>
           <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            Désolé, la page que vous recherchez n'existe pas ou a été déplacée. Retournez à l'accueil pour explorer nos
-            offres de stages à l'étranger.
+            Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

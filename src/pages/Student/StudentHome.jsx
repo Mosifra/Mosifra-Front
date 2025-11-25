@@ -27,7 +27,7 @@ export default function StudentHome() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra hover:shadow-lg transition-all duration-300">
+            <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra hover:shadow-lg transition-all duration-300 transform">
               <div className="mb-6">
                 <div className="w-12 h-12 bg-vert-mosifra rounded-lg flex items-center justify-center mb-4">
                   <BookOpen />
@@ -39,13 +39,13 @@ export default function StudentHome() {
               </div>
               <button
                 onClick={handleBrowseInternships}
-                className="w-full px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
+                className="w-full px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 transform"
               >
                 Accéder
               </button>
             </div>
 
-            <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra hover:shadow-lg transition-all duration-300">
+            <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra hover:shadow-lg transition-all duration-300 transform">
               <div className="mb-6">
                 <div className="w-12 h-12 bg-vert-mosifra rounded-lg flex items-center justify-center mb-4">
                   <FileText />
@@ -57,13 +57,13 @@ export default function StudentHome() {
               </div>
               <button
                 onClick={handleMyAccount}
-                className="w-full px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
+                className="w-full px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 transform"
               >
                 Accéder
               </button>
             </div>
 
-            <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra hover:shadow-lg transition-all duration-300">
+            <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra hover:shadow-lg transition-all duration-300 transform">
               <div className="mb-6">
                 <div className="w-12 h-12 bg-vert-mosifra rounded-lg flex items-center justify-center mb-4">
                   <Target />
@@ -73,7 +73,7 @@ export default function StudentHome() {
               </div>
               <button
                 onClick={handleMyApplications}
-                className="w-full px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
+                className="w-full px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 transform"
               >
                 Accéder
               </button>

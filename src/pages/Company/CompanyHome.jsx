@@ -23,7 +23,7 @@ export default function CompanyHome() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra hover:shadow-lg transition-all duration-300">
+            <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra hover:shadow-lg transition-all duration-300 transform">
               <div className="mb-6">
                 <div className="w-12 h-12 bg-vert-mosifra rounded-lg flex items-center justify-center mb-4">
                   <ClipboardPen/>
@@ -36,13 +36,13 @@ export default function CompanyHome() {
               </div>
               <button
                 onClick={handleSubmitInternship}
-                className="w-full px-6 py-3 rounded-lg font-medium transition-colors duration-300 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
+                className="w-full px-6 py-3 rounded-lg font-medium transition-all transform duration-300 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
               >
                 Accéder
               </button>
             </div>
 
-            <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra hover:shadow-lg transition-all duration-300">
+            <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra hover:shadow-lg transition-all duration-300 transform">
               <div className="mb-6">
                 <div className="w-12 h-12 bg-vert-mosifra rounded-lg flex items-center justify-center mb-4">
                   <Handshake/>
@@ -54,7 +54,7 @@ export default function CompanyHome() {
               </div>
               <button
                 onClick={handleManageCandidates}
-                className="w-full px-6 py-3 rounded-lg font-medium transition-colors duration-300 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
+                className="w-full px-6 py-3 rounded-lg font-medium transition-all transform duration-300 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
               >
                 Accéder
               </button>
