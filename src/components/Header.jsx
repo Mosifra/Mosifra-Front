@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import { getUserTypeFromCookie } from "../utils.js";
+import { clearSessionCookies, getUserTypeFromCookie, getCookie } from "../utils.js";
 import { useLocation } from "preact-iso";
 
 export function Header() {
@@ -19,6 +19,27 @@ export function Header() {
       window.removeEventListener("userTypeUpdated", updateUserType);
     };
   }, []);
+
+  async function handleLogOut() {
+    const jwt = getCookie("jwt");
+
+    try {
+      await fetch("http://localhost:8000/auth/logout", {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${jwt}`,
+        },
+        credentials: "include",
+      });
+    } catch (err) {
+      console.error("Problème lors de la déconnexion :", err);
+    }
+
+    clearSessionCookies();
+    setUserType(null);
+    route("/login");
+    window.dispatchEvent(new Event("userTypeUpdated"));
+  }
 
   return (
     <nav class="sticky top-0 z-50 bg-white shadow-lg border-b border-slate-200">
@@ -125,6 +146,16 @@ export function Header() {
                 </li>
               </>
             )}
+
+            {userType && (
+              <button
+                onClick={handleLogOut}
+                className="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium"
+              >
+                Se déconnecter
+              </button>
+            )}
+
           </ul>
         </div>
       </div>

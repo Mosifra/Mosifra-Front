@@ -73,7 +73,7 @@ export function getCookie(name) {
   return cookies[name] || null
 }
 
-function clearSessionCookies() {
+export function clearSessionCookies() {
   const paths = ["/", "/student", "/company", "/university", "/login", "/account"];
   const domains = [window.location.hostname, `.${window.location.hostname}`];
 
