@@ -28,10 +28,10 @@ export default function SubmitInternship() {
     
     const submissionData = {
       course_type: formData.courseType,
-      date_start: formData.startDate,
-      date_end: formData.endDate,
-      min_internship_length: formData.minDuration,
-      max_internship_length: formData.maxDuration,
+      start_date: formData.startDate,
+      end_date: formData.endDate,
+      min_internship_length: parseInt(formData.minDuration),
+      max_internship_length: parseInt(formData.maxDuration),
       title: formData.title,
       description: formData.description,
       place: formData.location,
@@ -42,7 +42,7 @@ export default function SubmitInternship() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+          "Authorization": `Bearer ${jwt}`
         },
         body: JSON.stringify(submissionData)
       })
@@ -88,9 +88,9 @@ export default function SubmitInternship() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900"
                 >
                   <option value="">Sélectionner un type</option>
-                  <option value="butinfo">BUT Informatique</option>
-                  <option value="buttc">BUT TC</option>
-                  <option value="butgea">BUT GEA</option>
+                  <option value="info">BUT Informatique</option>
+                  <option value="tc">BUT TC</option>
+                  <option value="gea">BUT GEA</option>
                 </select>
               </div>
 
@@ -182,17 +182,6 @@ export default function SubmitInternship() {
                   />
                 </div>
               </div>
-
-              {duration > 0 && (
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-300">
-                  <p className="text-sm text-gray-700">
-                    Durée calculée:{" "}
-                    <span className="font-bold text-vert-mosifra">
-                      {duration} semaine{duration > 1 ? "s" : ""}
-                    </span>
-                  </p>
-                </div>
-              )}
 
               <button
                 type="submit"
