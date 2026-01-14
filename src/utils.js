@@ -99,3 +99,46 @@ export function clearSessionCookies() {
     }
   }
 }
+
+export async function getCourseTypes() {
+  const jwt = getCookie("jwt");
+  const userType = getUserTypeFromCookie(jwt);
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${jwt}`,
+  };
+
+  const options = {
+    method: "GET",
+    headers,
+  };
+
+  if (userType == "student") {
+    const fetchurl = "http://localhost:8000/user/student/course_type";
+  } else if (userType == "university") {
+    const fetchurl = "http://localhost:8000/user/university/course_types";
+  } else {
+    console.log("L'utilisateur n'est pas autorisé à accéder à la route");
+  }
+
+  try {
+    const response = await fetch(fetchurl, options);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error ${response.status}`);
+    }
+
+    const contentType = response.headers.get("content-type");
+    const data =
+      contentType && contentType.includes("application/json")
+        ? await response.json()
+        : await response.text();
+    if (data.success) {
+      return data.course_type;
+    } else {
+      console.log("Erreur lors de la récupération de la réponse");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}

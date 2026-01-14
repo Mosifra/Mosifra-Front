@@ -1,7 +1,7 @@
 import { BookOpen, Send, Upload, X } from "lucide-preact"
 import { useLocation } from "preact-iso"
 import { useEffect, useState } from "preact/hooks"
-import { getCookie, getUserTypeFromCookie } from "../utils"
+import { getCookie, getCourseTypes, getStudentCourseType, getUserTypeFromCookie } from "../utils"
 
 export default function Internships() {
   const location = useLocation()
@@ -28,23 +28,22 @@ export default function Internships() {
 
     const fetchInternships = async () => {
       const jwt = getCookie("jwt");
+      const course_types = getCourseTypes();
       const headers = {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${jwt}`
       };
 
-      const data = {
-        //todo add course type
-      }
-
       const options = {
         method: "POST",
         headers,
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          course_types: course_types
+        })
       };
 
       try {
-        const response = await fetch("", options);
+        const response = await fetch("http://localhost:8000/courses/internships", options);
 
         if (!response.ok) {
           throw new Error(`HTTP error ${response.status}`);
@@ -55,51 +54,14 @@ export default function Internships() {
           ? await response.json()
           : await response.text();
 
-
+        if (data.success) {
+          setInternships(data.internships)
+        }
       } catch (error) {
         console.error(error);
       }
     }
-    const mockInternships = [
-      {
-        id: 1,
-        title: "Développeur Full Stack",
-        company: "TechCorp",
-        location: "Paris",
-        duration: "3 mois",
-        description: "Rejoignez notre équipe pour développer des applications web modernes.",
-        requirements: ["JavaScript", "React", "Node.js"],
-        salary: "Gratuit",
-        startDate: "2024-09-01",
-        endDate: "2024-11-30",
-      },
-      {
-        id: 2,
-        title: "Designer UX/UI",
-        company: "DesignStudio",
-        location: "Lyon",
-        duration: "2 mois",
-        description: "Créez des interfaces innovantes pour nos clients.",
-        requirements: ["Figma", "Adobe XD", "Prototyping"],
-        salary: "Gratuit",
-        startDate: "2024-10-01",
-        endDate: "2024-11-30",
-      },
-      {
-        id: 3,
-        title: "Data Analyst",
-        company: "DataInsights",
-        location: "Marseille",
-        duration: "4 mois",
-        description: "Analysez les données et créez des rapports pertinents.",
-        requirements: ["Python", "SQL", "Tableau"],
-        salary: "Rémunéré",
-        startDate: "2024-08-15",
-        endDate: "2024-12-15",
-      },
-    ]
 
-    setInternships(mockInternships)
     setLoading(false)
   }, [])
 
@@ -154,14 +116,17 @@ export default function Internships() {
   }
 
   return (
+
     <main className="min-h-screen bg-beige-mosifra">
       <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="mb-12">
-          <h1 className="text-5xl font-bold text-vert-mosifra mb-2">Offres de stage</h1>
+          <h1 className="text-5xl font-bold text-vert-mosifra mb-2">
+            Offres de stage
+          </h1>
           <p className="text-xl text-gray-700">
             {userType === "student"
-              ? "Explorez les meilleures offres de stage et postulez dès maintenant"
-              : "Consultez les offres de stage disponibles"}
+              ? "Consulter et postuler aux offres disponibles"
+              : "Offres disponibles"}
           </p>
         </div>
 
@@ -169,64 +134,70 @@ export default function Internships() {
           {internships.map((internship) => (
             <div
               key={internship.id}
-              className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-all transform duration-300"
+              className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300"
             >
               <div className="p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-vert-mosifra mb-1">{internship.title}</h3>
-                    <p className="text-gray-600 font-medium">{internship.company}</p>
-                  </div>
-                </div>
+                <h3 className="text-xl font-bold text-vert-mosifra mb-2">
+                  {internship.title}
+                </h3>
 
-                <div className="space-y-2 text-sm text-gray-600 mb-4">
-                  <p className="flex items-center gap-2">
-                    <span className="font-semibold text-vert-mosifra">📍</span>
+                <p className="text-sm text-gray-600 italic mb-3">
+                  Type de cours : {internship.course_type}
+                </p>
+
+                <div className="space-y-2 text-sm text-gray-700 mb-4">
+                  <p>
+                    <span className="font-semibold text-vert-mosifra">📍 Lieu :</span>{" "}
                     {internship.place}
                   </p>
-                  <p className="flex items-center gap-2">
-                    <span className="font-semibold text-vert-mosifra">⏱️</span>
-                    {internship.duration}
+
+                  <p>
+                    <span className="font-semibold text-vert-mosifra">
+                      📅 Date de début :
+                    </span>{" "}
+                    {internship.date_start}
                   </p>
-                  <p className="flex items-center gap-2">
-                    <span className="font-semibold text-vert-mosifra">💰</span>
-                    {internship.salary}
+
+                  <p>
+                    <span className="font-semibold text-vert-mosifra">
+                      📅 Date de fin :
+                    </span>{" "}
+                    {internship.date_end}
+                  </p>
+
+                  <p>
+                    <span className="font-semibold text-vert-mosifra">
+                      ⏳ Longueur permise :
+                    </span>{" "}
+                    {internship.min_internship_length} à{" "}
+                    {internship.max_internship_length} semaines
                   </p>
                 </div>
 
-                <p className="text-gray-700 text-sm mb-4">{internship.description}</p>
-
-                <div className="mb-4">
-                  <p className="text-xs font-semibold text-gray-600 mb-2">Compétences requises:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {internship.requirements.map((req, idx) => (
-                      <span key={idx} className="text-xs bg-beige-mosifra text-vert-mosifra px-3 py-1 rounded-full">
-                        {req}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <p className="text-gray-700 text-sm mb-4">
+                  {internship.description}
+                </p>
 
                 {loadingUserType ? (
                   <div className="w-full px-4 py-3 bg-gray-200 text-gray-600 rounded-lg text-center font-semibold cursor-not-allowed">
-                    Consultation uniquement
+                    Consultation seulement
                   </div>
                 ) : userType === "student" ? (
                   <button
                     onClick={() => handleApplyClick(internship)}
-                    className="w-full px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all transform duration-300 flex items-center justify-center gap-2"
+                    className="w-full px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Send size={18} />
                     Postuler
                   </button>
                 ) : userType === "university" ? (
                   <div className="w-full px-4 py-3 bg-gray-200 text-gray-600 rounded-lg font-semibold text-center cursor-not-allowed">
-                    Consultation uniquement
+                    Consultation seulement
                   </div>
                 ) : (
                   <button
                     onClick={() => location.route("/login")}
-                    className="w-full px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all transform duration-300"
+                    className="w-full px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
                   >
                     Se connecter
                   </button>
@@ -239,108 +210,10 @@ export default function Internships() {
         {internships.length === 0 && (
           <div className="text-center py-12">
             <BookOpen size={48} className="mx-auto text-gray-400 mb-4" />
-            <p className="text-xl text-gray-600">Aucune offre disponible pour le moment.</p>
+            <p className="text-xl text-gray-600">Aucune offre disponible</p>
           </div>
         )}
       </div>
-
-      {showApplicationModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <h2 className="text-2xl font-bold text-vert-mosifra">Candidature pour {selectedInternship?.title}</h2>
-                  <p className="text-gray-600">{selectedInternship?.company}</p>
-                </div>
-                <button
-                  onClick={() => {
-                    setShowApplicationModal(false)
-                    setApplicationData({ motivationLetter: "", cv: null })
-                  }}
-                  className="text-gray-400 hover:text-gray-600"
-                >
-                  <X size={24} />
-                </button>
-              </div>
-
-              <form onSubmit={handleSubmitApplication} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-semibold text-vert-mosifra mb-2">Lettre de motivation</label>
-                  <textarea
-                    value={applicationData.motivationLetter}
-                    onInput={(e) =>
-                      setApplicationData({
-                        ...applicationData,
-                        motivationLetter: e.target.value,
-                      })
-                    }
-                    placeholder="Expliquez pourquoi vous êtes intéressé par ce stage..."
-                    rows={6}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-vert-mosifra focus:outline-none focus:ring-2 focus:ring-vert-mosifra/20"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-vert-mosifra mb-2">CV (optionnel)</label>
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="file"
-                      id="cv-upload"
-                      onChange={(e) => {
-                        const file = e.currentTarget.files?.[0]
-                        if (file) {
-                          setApplicationData({ ...applicationData, cv: file })
-                        }
-                      }}
-                      accept=".pdf,.doc,.docx"
-                      className="hidden"
-                    />
-                    <label
-                      htmlFor="cv-upload"
-                      className="flex-1 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-vert-mosifra transition-all duration-300 transform flex items-center justify-center gap-2 text-gray-600 hover:text-vert-mosifra"
-                    >
-                      <Upload size={20} />
-                      {applicationData.cv ? applicationData.cv.name : "Cliquez pour télécharger"}
-                    </label>
-                    {applicationData.cv && (
-                      <button
-                        type="button"
-                        onClick={() => setApplicationData({ ...applicationData, cv: null })}
-                        className="px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-all transform duration-300"
-                      >
-                        <X size={18} />
-                      </button>
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex gap-3 mt-6">
-                  <button
-                    type="submit"
-                    disabled={submitting || !applicationData.motivationLetter.trim()}
-                    className="flex-1 px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 transform disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                  >
-                    <Send size={18} />
-                    {submitting ? "Envoi en cours..." : "Envoyer la candidature"}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setShowApplicationModal(false)
-                      setApplicationData({ motivationLetter: "", cv: null })
-                    }}
-                    className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-all duration-300 transform"
-                  >
-                    Annuler
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
     </main>
   )
 }
