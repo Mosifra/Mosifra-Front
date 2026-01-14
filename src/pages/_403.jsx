@@ -1,20 +1,16 @@
 import { House, List } from "lucide-preact"
 import { useLocation } from "preact-iso"
 
-export function NotFound() {
+export function Unauthorized() {
 
   const { route } = useLocation()
   return (
     <div className="min-h-screen bg-beige-mosifra flex flex-col justify-center items-center px-4">
       <div className="text-center max-w-2xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-8xl font-bold text-transparent bg-gradient-to-r from-vert-mosifra to-beige-mosifra bg-clip-text mb-4">
-            404
-          </h1>
-          <h2 className="text-3xl font-semibold text-slate-800 mb-4">Page non trouvée</h2>
-          <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
-          </p>
+          <h1 className="text-8xl font-bold text-transparent bg-linear-to-r from-vert-mosifra to-beige-mosifra bg-clip-text mb-4">403</h1>
+          <h2 className="text-3xl font-semibold text-slate-800 mb-4">Pas d'autorisation</h2>
+          <p className="text-lg text-slate-600 mb-8 leading-relaxed">Vous n'avez pas l'autorisation d'accéder à cette page</p>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a

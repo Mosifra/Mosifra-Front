@@ -12,7 +12,7 @@ export function ProtectedRouteByType({ component: Component, allowedTypes = [], 
       const userType = await getUserTypeFromCookie();
 
       if (!userType || !allowedTypes.includes(userType)) {
-        location.route("/");
+        location.route("/403");
       } else {
         setAuthorized(true);
       }

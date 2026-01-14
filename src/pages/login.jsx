@@ -16,8 +16,8 @@ export function LoginPage() {
     setIsLoading(true);
     e.preventDefault();
 
-    const connectionPayload = {login: login, password: password, remember_me: rememberMe, user_type: userType};
-    
+    const connectionPayload = { login: login, password: password, remember_me: rememberMe, user_type: userType };
+
 
     try {
       const response = await fetch(`http://localhost:8000/auth/login`, {
@@ -50,19 +50,19 @@ export function LoginPage() {
 
   return (
     <div class="min-h-screen bg-gradient-to-br from-beige-mosifra to-white">
-      
+
       <div class="flex items-center justify-center py-12 px-4">
-        <div class="max-w-md w-full"> 
+        <div class="max-w-md w-full">
           <div class="text-center mb-8">
             <div class="w-16 h-16 bg-vert-mosifra rounded-full flex items-center justify-center mx-auto mb-4">
-              <img src="/images/logo_notext.svg" /> 
+              <img src="/images/logo_notext.svg" />
             </div>
             <h1 class="text-3xl font-bold text-slate-800 mb-2">Connexion à Mosifra</h1>
             <p class="text-slate-600">Accédez à votre espace de gestion de stages</p>
           </div>
 
- 
-          <div class="bg-white rounded-xl shadow-lg border border-slate-200 p-8"> 
+
+          <div class="bg-white rounded-xl shadow-lg border border-slate-200 p-8">
             <div class="mb-6">
               <label class="block text-sm font-medium text-slate-700 mb-3">Type de compte</label>
               <div class="grid grid-cols-3 gap-2">
@@ -99,7 +99,7 @@ export function LoginPage() {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} class="space-y-6"> 
+            <form onSubmit={handleSubmit} class="space-y-6">
               <div>
                 <label class="block text-sm font-medium text-slate-700 mb-2">Nom d'utilisateur</label>
                 <div class="relative">
@@ -108,12 +108,12 @@ export function LoginPage() {
                     type="text"
                     value={login}
                     onInput={(e) => setLogin(e.target.value)}
-                    placeholder="Mosifra-Man"
+                    placeholder="dupont1"
                     class="w-full pl-10 pr-4 py-3 border border-slate-200 text-vert-mosifra rounded-lg focus:border-vert-mosifra focus:outline-none focus:ring-2 focus:ring-vert-mosifra/20"
                     required
                   />
                 </div>
-              </div> 
+              </div>
               <div>
                 <label class="block text-sm font-medium text-slate-700 mb-2">Mot de passe</label>
                 <div class="relative">
@@ -134,7 +134,7 @@ export function LoginPage() {
                     {showPassword ? <EyeOff class="h-5 w-5" /> : <Eye class="h-5 w-5" />}
                   </button>
                 </div>
-              </div> 
+              </div>
               <div class="flex items-center justify-between">
                 <label class="flex items-center">
                   <input type="checkbox" checked={rememberMe} onChange={(e) => setRememberMe(e.currentTarget.checked)} class="rounded border-slate-300 text-vert-mosifra focus:ring-vert-mosifra" />
@@ -148,7 +148,7 @@ export function LoginPage() {
 
               <p class="text-red-600 text-sm mt-2 text-center">{errorMessage}</p>
 
- 
+
               <button
                 type="submit"
                 disabled={isLoading}

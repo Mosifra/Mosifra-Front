@@ -15,30 +15,32 @@ import { Twofa } from './pages/twofa.jsx';
 import ManageStudents from './pages/University/ManageStudents.jsx';
 import { ProtectedRouteByType } from './components/ProtectedRouteByType.jsx';
 import { Footer } from './components/footer.jsx';
+import { Unauthorized } from './pages/_403.jsx';
 
 export function App() {
-	return (
-		<SessionChecker>
-			<LocationProvider>
-				<Header />
-				<main>
-					<Router>
-						<Route path="/" component={HomeRouter} />
-						<Route path="/login" component={LoginPage} />
-						<Route path="/twofa" component={Twofa} />
-						<ProtectedRouteByType path="/internships" component={Internships} allowedTypes={['student', 'university']} />
-						<ProtectedRouteByType path="/student/account" component={StudentAccount} allowedTypes={['student']} />
-						<ProtectedRouteByType path="/student/applications" component={Applications} allowedTypes={['student']} />
-						<ProtectedRouteByType path="/company/managecandidates" component={ManageCandidates} allowedTypes={['company']} />
-						<ProtectedRouteByType path="/company/submitinternship" component={SubmitInternship} allowedTypes={['company']} />
-						<ProtectedRouteByType path="/university/students" component={ManageStudents} allowedTypes={['university']} />
-						<Route default component={NotFound} />
-					</Router>
-				</main> 
-				<Footer />
-			</LocationProvider>
-		</SessionChecker>
-	);
+  return (
+    <SessionChecker>
+      <LocationProvider>
+        <Header />
+        <main>
+          <Router>
+            <Route path="/" component={HomeRouter} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/twofa" component={Twofa} />
+            <Route path='/403' component={Unauthorized} />
+            <ProtectedRouteByType path="/internships" component={Internships} allowedTypes={['student', 'university']} />
+            <ProtectedRouteByType path="/student/account" component={StudentAccount} allowedTypes={['student']} />
+            <ProtectedRouteByType path="/student/applications" component={Applications} allowedTypes={['student']} />
+            <ProtectedRouteByType path="/company/managecandidates" component={ManageCandidates} allowedTypes={['company']} />
+            <ProtectedRouteByType path="/company/submitinternship" component={SubmitInternship} allowedTypes={['company']} />
+            <ProtectedRouteByType path="/university/students" component={ManageStudents} allowedTypes={['university']} />
+            <Route default component={NotFound} />
+          </Router>
+        </main>
+        <Footer />
+      </LocationProvider>
+    </SessionChecker>
+  );
 }
 
 render(<App />, document.getElementById('app'));
