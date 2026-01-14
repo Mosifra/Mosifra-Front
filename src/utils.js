@@ -6,7 +6,6 @@ export async function getUserTypeFromCookie() {
 
   if (!jwt) return null;
 
-  
   try {
     const response = await fetch("http://localhost:8000/user/user_type", {
       method: "GET",
@@ -56,25 +55,31 @@ export async function checkSession() {
     }
 
     return data.valid || false;
-
   } catch (err) {
     console.error("Erreur lors de la vérification de la session :", err);
     clearSessionCookies();
     return false;
   }
-};
+}
 
 export function getCookie(name) {
   const cookies = document.cookie.split("; ").reduce((acc, c) => {
-    const [k, v] = c.split("=")
-    acc[k] = v
-    return acc
-  }, {})
-  return cookies[name] || null
+    const [k, v] = c.split("=");
+    acc[k] = v;
+    return acc;
+  }, {});
+  return cookies[name] || null;
 }
 
 export function clearSessionCookies() {
-  const paths = ["/", "/student", "/company", "/university", "/login", "/account"];
+  const paths = [
+    "/",
+    "/student",
+    "/company",
+    "/university",
+    "/login",
+    "/account",
+  ];
   const domains = [window.location.hostname, `.${window.location.hostname}`];
 
   const names = ["jwt"];
