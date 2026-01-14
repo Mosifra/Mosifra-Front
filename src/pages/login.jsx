@@ -49,7 +49,7 @@ export function LoginPage() {
   };
 
   return (
-    <div class="min-h-screen bg-gradient-to-br from-beige-mosifra to-white">
+    <div class="min-h-screen bg-beige-mosifra">
 
       <div class="flex items-center justify-center py-12 px-4">
         <div class="max-w-md w-full">
@@ -140,19 +140,14 @@ export function LoginPage() {
                   <input type="checkbox" checked={rememberMe} onChange={(e) => setRememberMe(e.currentTarget.checked)} class="rounded border-slate-300 text-vert-mosifra focus:ring-vert-mosifra" />
                   <span class="ml-2 text-sm text-slate-600">Se souvenir de moi</span>
                 </label>
-                <a href="#" class="text-sm text-vert-mosifra hover:underline">
-                  Mot de passe oublié ?
-                </a>
               </div>
 
-
               <p class="text-red-600 text-sm mt-2 text-center">{errorMessage}</p>
-
 
               <button
                 type="submit"
                 disabled={isLoading}
-                class={`w-full py-3 rounded-lg border-1 transition-all duration-300 transform font-medium flex items-center justify-center gap-2
+                class={`w-full py-3 rounded-lg border transition-all duration-300 transform font-medium flex items-center justify-center gap-2
                   ${isLoading
                     ? "bg-gray-300 text-gray-600 border-gray-300 cursor-not-allowed"
                     : "bg-beige-mosifra text-vert-mosifra hover:bg-vert-mosifra hover:text-white border-vert-mosifra"
@@ -163,19 +158,6 @@ export function LoginPage() {
               </button>
             </form>
 
-          </div>
-
-          <div class="mt-8 text-center">
-            <p class="text-sm text-slate-500">
-              En vous connectant, vous acceptez nos{" "}
-              <a href="#" class="text-vert-mosifra hover:underline">
-                conditions d'utilisation
-              </a>{" "}
-              et notre{" "}
-              <a href="#" class="text-vert-mosifra hover:underline">
-                politique de confidentialité
-              </a>
-            </p>
           </div>
         </div>
       </div>
