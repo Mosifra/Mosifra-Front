@@ -1,7 +1,7 @@
 import { BookOpen, Send, Upload, X } from "lucide-preact"
 import { useLocation } from "preact-iso"
 import { useEffect, useState } from "preact/hooks"
-import { getUserTypeFromCookie } from "../utils"
+import { getCookie, getUserTypeFromCookie } from "../utils"
 
 export default function Internships() {
   const location = useLocation()
@@ -26,6 +26,40 @@ export default function Internships() {
     }
     fetchUserType()
 
+    const fetchInternships = async () => {
+      const jwt = getCookie("jwt");
+      const headers = {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`
+      };
+
+      const data = {
+        //todo add course type
+      }
+
+      const options = {
+        method: "POST",
+        headers,
+        body: JSON.stringify(data),
+      };
+
+      try {
+        const response = await fetch("", options);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error ${response.status}`);
+        }
+
+        const contentType = response.headers.get("content-type");
+        const data = contentType && contentType.includes("application/json")
+          ? await response.json()
+          : await response.text();
+
+
+      } catch (error) {
+        console.error(error);
+      }
+    }
     const mockInternships = [
       {
         id: 1,
@@ -91,10 +125,6 @@ export default function Internships() {
       }
 
       // Call l'API
-      // const response = await fetch("http://localhost:8000/apply", {
-      //   method: "POST",
-      //   body: formData,
-      // });
 
       console.log("Application submitted:", {
         internshipId: selectedInternship.id,
@@ -152,7 +182,7 @@ export default function Internships() {
                 <div className="space-y-2 text-sm text-gray-600 mb-4">
                   <p className="flex items-center gap-2">
                     <span className="font-semibold text-vert-mosifra">📍</span>
-                    {internship.location}
+                    {internship.place}
                   </p>
                   <p className="flex items-center gap-2">
                     <span className="font-semibold text-vert-mosifra">⏱️</span>
