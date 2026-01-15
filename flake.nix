@@ -25,6 +25,7 @@
           echo "💨 Installation des dépendances avec Bun…"
           bun install
         fi
+        neovide &
       '';
     };
   };
