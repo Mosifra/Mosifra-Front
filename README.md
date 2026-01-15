@@ -6,7 +6,7 @@ installed manually.
 ## Using Nix Flake
 
 The flake sets up a development environment with **Bun** and prepares everything
-needed for Tailwind and Preact.
+needed for Tailwind and Preact. To use it, you only need **Nix** installed with the experimental features `nix-command` and `flakes` enabled.
 
 When you enter the flake dev shell:
 
