@@ -1,5 +1,6 @@
 import { useState } from "preact/hooks"
 import { getCookie } from "../../utils"
+import { getBaseUrl } from "../../utils"
 
 export default function SubmitInternship() {
   const [formData, setFormData] = useState({
@@ -23,9 +24,9 @@ export default function SubmitInternship() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     const jwt = getCookie("jwt");
-    
+
     const submissionData = {
       course_type: formData.courseType,
       start_date: formData.startDate,
@@ -38,7 +39,7 @@ export default function SubmitInternship() {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/create/internship", {
+      const response = await fetch(`${getBaseUrl()}/create/internship`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +51,7 @@ export default function SubmitInternship() {
       if (response.ok) {
         console.log("Internship submitted successfully:", submissionData)
         alert("Stage proposé avec succès!")
-        
+
         setFormData({
           courseType: "",
           startDate: "",

@@ -2,6 +2,7 @@ import { BookOpen, Send, Upload, X } from "lucide-preact"
 import { useLocation } from "preact-iso"
 import { useEffect, useState } from "preact/hooks"
 import { getCookie, getCourseTypes, getStudentCourseType, getUserTypeFromCookie } from "../utils"
+import { getBaseUrl } from "../utils"
 
 export default function Internships() {
   const location = useLocation()
@@ -43,7 +44,7 @@ export default function Internships() {
       };
 
       try {
-        const response = await fetch("http://localhost:8000/courses/internships", options);
+        const response = await fetch(`${getBaseUrl()}/courses/internships`, options);
 
         if (!response.ok) {
           throw new Error(`HTTP error ${response.status}`);

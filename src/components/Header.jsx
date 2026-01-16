@@ -1,6 +1,7 @@
 import { useEffect, useState } from "preact/hooks";
 import { clearSessionCookies, getUserTypeFromCookie, getCookie } from "../utils.js";
 import { useLocation } from "preact-iso";
+import { getBaseUrl } from "../utils.js";
 
 export function Header() {
   const { route } = useLocation();
@@ -24,7 +25,7 @@ export function Header() {
     const jwt = getCookie("jwt");
 
     try {
-      await fetch("http://localhost:8000/auth/logout", {
+      await fetch(`${getBaseUrl()}/auth/logout`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${jwt}`,

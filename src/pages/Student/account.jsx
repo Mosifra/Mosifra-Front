@@ -1,5 +1,6 @@
 import { useState, useEffect } from "preact/hooks"
 import { FileText, User, Mail, Phone } from "lucide-preact"
+import { getBaseUrl } from "../../utils"
 
 export default function StudentAccount() {
   const [studentData, setStudentData] = useState({
@@ -12,26 +13,26 @@ export default function StudentAccount() {
   })
 
   useEffect(() => {
-      const fetchStudentData = async () => {
-        const headers = new Headers();
-        const jwt = getCookie("jwt");
-        headers.append("Authorization", `Bearer ${jwt}`);
-        const options = {
-          method: "GET",
-          headers: headers,
-          redirect: "follow"
-        };
-  
-        try {
-          const response = await fetch("http://localhost:8000/user/student_info", options);
-          const data = await response.json();
-          setStudentData(data);
-        } catch (error) {
-          console.log(error);
-        }
+    const fetchStudentData = async () => {
+      const headers = new Headers();
+      const jwt = getCookie("jwt");
+      headers.append("Authorization", `Bearer ${jwt}`);
+      const options = {
+        method: "GET",
+        headers: headers,
+        redirect: "follow"
       };
-      fetchStudentData();
-    }, [])
+
+      try {
+        const response = await fetch(`${getBaseUrl()}/user/student_info`, options);
+        const data = await response.json();
+        setStudentData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchStudentData();
+  }, [])
 
   return (
     <main className="min-h-screen bg-beige-mosifra py-12">

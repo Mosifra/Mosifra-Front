@@ -1,3 +1,7 @@
+export function getBaseUrl() {
+  return process.env.API_URL;
+}
+
 export async function getUserTypeFromCookie() {
   const jwt = getCookie("jwt");
   const headers = new Headers();
@@ -7,7 +11,7 @@ export async function getUserTypeFromCookie() {
   if (!jwt) return null;
 
   try {
-    const response = await fetch("http://localhost:8000/user/user_type", {
+    const response = await fetch(`${getBaseUrl()}/user/user_type`, {
       method: "GET",
       headers: headers,
       redirect: "follow",
@@ -36,7 +40,7 @@ export async function checkSession() {
   headers.append("Authorization", `Bearer ${jwt}`);
 
   try {
-    const response = await fetch("http://localhost:8000/auth/check_session", {
+    const response = await fetch(`${getBaseUrl()}/auth/check_session`, {
       method: "GET",
       headers: headers,
       redirect: "follow",
@@ -114,9 +118,9 @@ export async function getCourseTypes() {
   };
 
   if (userType == "student") {
-    const fetchurl = "http://localhost:8000/user/student/course_type";
+    const fetchurl = `${getBaseUrl()}/user/student/course_type`;
   } else if (userType == "university") {
-    const fetchurl = "http://localhost:8000/user/university/course_types";
+    const fetchurl = `${getBaseUrl()}/user/university/course_types`;
   } else {
     console.log("L'utilisateur n'est pas autorisé à accéder à la route");
   }

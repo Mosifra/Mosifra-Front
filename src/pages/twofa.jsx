@@ -15,15 +15,15 @@ export function Twofa() {
 
   const ttl = remember
     ? 30 * 24 * 3600
-    : 30 * 60;      
+    : 30 * 60;
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const connectionPayload = {code: code, transaction_id: transactionId, user_type: userType, remember_me: remember};
+    const connectionPayload = { code: code, transaction_id: transactionId, user_type: userType, remember_me: remember };
     try {
-      const response = await fetch("http://localhost:8000/auth/twofa", {
+      const response = await fetch(`${getBaseUrl()}/auth/twofa`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

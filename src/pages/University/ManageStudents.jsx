@@ -1,6 +1,7 @@
 import { ChevronLeft, Plus, Trash2, Upload } from "lucide-preact";
 import { useEffect, useState } from "preact/hooks";
 import { getCookie } from "../../utils";
+import { getBaseUrl } from "../../utils";
 
 export default function UniversityClasses() {
   const [classes, setClasses] = useState([]);
@@ -31,7 +32,7 @@ export default function UniversityClasses() {
 
       try {
         const response = await fetch(
-          "http://localhost:8000/courses/classes",
+          `${getBaseUrl()}/courses/classes`,
           options
         );
         const data = await response.json();
@@ -57,7 +58,7 @@ export default function UniversityClasses() {
 
       try {
         const response = await fetch(
-          "http://localhost:8000/courses/class/students",
+          `${getBaseUrl()}/courses/class/students`,
           {
             method: "POST",
             headers: headers,
@@ -98,7 +99,7 @@ export default function UniversityClasses() {
 
       try {
         const jwt = getCookie("jwt");
-        const response = await fetch("http://localhost:8000/create/class", {
+        const response = await fetch(`${getBaseUrl()}/create/class`, {
           method: "POST",
           headers: {
             Authorization: `Bearer ${jwt}`,
@@ -114,7 +115,7 @@ export default function UniversityClasses() {
           return;
         }
 
-        const classesResponse = await fetch("http://localhost:8000/courses/classes", {
+        const classesResponse = await fetch(`${getBaseUrl()}/courses/classes`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${jwt}`,
@@ -139,7 +140,7 @@ export default function UniversityClasses() {
   const handleDeleteClass = async (id) => {
     const confirmed = window.confirm("Avez-vous la certitude de vouloir supprimer cette classe ? Cette action est irréversible.")
     if (!confirmed) return;
-    
+
     const headers = new Headers();
     const jwt = getCookie("jwt");
     headers.append("Authorization", `Bearer ${jwt}`);
@@ -148,7 +149,7 @@ export default function UniversityClasses() {
       class_id: `${id}`
     };
     try {
-      const response = await fetch("http://localhost:8000/courses/class", {
+      const response = await fetch(`${getBaseUrl()}/courses/class`, {
         method: 'DELETE',
         headers: headers,
         body: JSON.stringify(payload)
@@ -182,7 +183,7 @@ export default function UniversityClasses() {
       formData.append("class", String(classId));
       const jwt = getCookie("jwt");
 
-      const response = await fetch("http://localhost:8000/create/students", {
+      const response = await fetch(`${getBaseUrl()}/create/students`, {
         headers: {
           Authorization: `Bearer ${jwt}`,
         },
@@ -203,7 +204,7 @@ export default function UniversityClasses() {
         headers.append("Content-Type", "application/json");
 
         const studentResponse = await fetch(
-          "http://localhost:8000/courses/class/students",
+          `${getBaseUrl()}/courses/class/students`,
           {
             method: "POST",
             headers: headers,
@@ -472,7 +473,7 @@ export default function UniversityClasses() {
               key={classItem.id}
               className="bg-white rounded-xl shadow-md p-6 border-l-4 border-vert-mosifra hover:shadow-lg"
             >
-              <div 
+              <div
                 onClick={() => setSelectedClassId(classItem.id)}
                 className="cursor-pointer"
               >
@@ -511,11 +512,10 @@ export default function UniversityClasses() {
 
                 <label
                   htmlFor={`csv-upload-${classItem.id}`}
-                  className={`flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-vert-mosifra rounded-lg font-semibold cursor-pointer transition-all transform duration-300 ${
-                    uploadingClassId === classItem.id
-                      ? "bg-gray-100 text-gray-500 cursor-not-allowed"
-                      : "text-vert-mosifra hover:bg-beige-mosifra"
-                  }`}
+                  className={`flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-vert-mosifra rounded-lg font-semibold cursor-pointer transition-all transform duration-300 ${uploadingClassId === classItem.id
+                    ? "bg-gray-100 text-gray-500 cursor-not-allowed"
+                    : "text-vert-mosifra hover:bg-beige-mosifra"
+                    }`}
                 >
                   <Upload size={18} />
                   {uploadingClassId === classItem.id
