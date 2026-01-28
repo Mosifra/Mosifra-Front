@@ -1,3 +1,4 @@
+import { getBaseUrl } from "../utils.js"
 import { ArrowRight, Binary } from "lucide-preact";
 import { useLocation } from "preact-iso";
 import { useState } from "preact/hooks";
