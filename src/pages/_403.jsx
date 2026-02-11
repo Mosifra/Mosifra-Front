@@ -1,7 +1,15 @@
 import { House, List } from "lucide-preact"
 import { useLocation } from "preact-iso"
+import { useEffect, useState } from "preact/hooks"
+import { t, subscribe } from "../i18n"
 
 export function Unauthorized() {
+  const [, setLocale] = useState()
+  
+  useEffect(() => {
+    const unsubscribe = subscribe(() => setLocale({}))
+    return unsubscribe
+  }, [])
 
   const { route } = useLocation()
   return (
@@ -9,8 +17,8 @@ export function Unauthorized() {
       <div className="text-center max-w-2xl mx-auto">
         <div className="mb-8">
           <h1 className="text-8xl font-bold text-transparent bg-linear-to-r from-vert-mosifra to-beige-mosifra bg-clip-text mb-4">403</h1>
-          <h2 className="text-3xl font-semibold text-slate-800 mb-4">Pas d'autorisation</h2>
-          <p className="text-lg text-slate-600 mb-8 leading-relaxed">Vous n'avez pas l'autorisation d'accéder à cette page</p>
+          <h2 className="text-3xl font-semibold text-slate-800 mb-4">{t("errors.403.title", null, "Pas d'autorisation")}</h2>
+          <p className="text-lg text-slate-600 mb-8 leading-relaxed">{t("errors.403.message", null, "Vous n'avez pas l'autorisation d'accéder à cette page")}</p>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
@@ -22,7 +30,7 @@ export function Unauthorized() {
             className="inline-flex items-center px-6 py-3 border-2 border-vert-mosifra text-vert-mosifra font-semibold rounded-lg hover:bg-vert-mosifra hover:text-white transition-all duration-300 transform hover:scale-105"
           >
             <House class="w-5 h-5 mr-2" />
-            Retour à l'accueil
+            {t("errors.403.home", null, "Retour à l'accueil")}
           </a>
         </div>
       </div>

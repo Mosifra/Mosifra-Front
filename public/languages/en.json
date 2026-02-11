@@ -42,11 +42,15 @@
 
   "twofa.title": "Two-factor authentication",
   "twofa.instruction": "Please enter the code sent to your e-mail address",
+  "twofa.instructionAccount": "Please enter the code sent to the email address associated with your account",
   "twofa.code": "Verification code",
+  "twofa.codePlaceholder": "Your code",
   "twofa.submit": "Verify",
   "twofa.resend": "Resend code",
   "twofa.sent": "Code sent",
   "twofa.invalid": "Invalid code. Try again.",
+  "twofa.incorrect": "Incorrect code, please try again.",
+  "twofa.error": "Request error",
 
   "buttons.save": "Save",
   "buttons.cancel": "Cancel",
@@ -346,6 +350,32 @@
   "university.home.internshipsAccess": "Access",
   "university.home.studentsTitle": "Manage students",
   "university.home.studentsDescription": "Manage your classes and student lists.",
-  "university.home.studentsAccess": "Access"
+  "university.home.studentsAccess": "Access",
+
+  "errors.403.title": "Unauthorized",
+  "errors.403.message": "You do not have permission to access this page",
+  "errors.403.home": "Back to home",
+  "errors.404.title": "Page not found",
+  "errors.404.message": "Sorry, the page you are looking for does not exist or has been moved.",
+  "errors.404.home": "Back to home",
+
+  "internships.title": "Internship offers",
+  "internships.subtitle.student": "Browse and apply to available offers",
+  "internships.subtitle.default": "Available offers",
+  "internships.loading": "Loading offers...",
+  "internships.noOffers": "No offers available",
+  "internships.courseType": "Course type:",
+  "internships.location": "📍 Location:",
+  "internships.startDate": "📅 Start date:",
+  "internships.endDate": "📅 End date:",
+  "internships.duration": "⏳ Duration allowed:",
+  "internships.durationTo": "to",
+  "internships.weeks": "weeks",
+  "internships.viewOnly": "View only",
+  "internships.apply": "Apply",
+  "internships.login": "Log in",
+  "internships.studentOnly": "Only students can apply to internships.",
+  "internships.applySuccess": "Application sent successfully!",
+  "internships.applyError": "Error sending application."
 }
 

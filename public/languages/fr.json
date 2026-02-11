@@ -43,11 +43,15 @@
 
   "twofa.title": "Validation en deux étapes",
   "twofa.instruction": "Veuillez saisir le code envoyé à votre adresse e-mail",
+  "twofa.instructionAccount": "Veuillez saisir le code envoyé à l'adresse mail associée à votre compte",
   "twofa.code": "Code de vérification",
+  "twofa.codePlaceholder": "Votre code",
   "twofa.submit": "Valider",
   "twofa.resend": "Renvoyer le code",
   "twofa.sent": "Code envoyé",
   "twofa.invalid": "Code invalide. Réessayez.",
+  "twofa.incorrect": "Code incorrect, veuillez réessayer.",
+  "twofa.error": "Erreur lors de la requête",
 
   "buttons.save": "Enregistrer",
   "buttons.cancel": "Annuler",
@@ -347,5 +351,31 @@
   "university.home.internshipsAccess": "Accéder",
   "university.home.studentsTitle": "Gérer les étudiants",
   "university.home.studentsDescription": "Gérer vos promotions et la liste des étudiants.",
-  "university.home.studentsAccess": "Accéder"
+  "university.home.studentsAccess": "Accéder",
+
+  "errors.403.title": "Pas d'autorisation",
+  "errors.403.message": "Vous n'avez pas l'autorisation d'accéder à cette page",
+  "errors.403.home": "Retour à l'accueil",
+  "errors.404.title": "Page non trouvée",
+  "errors.404.message": "Désolé, la page que vous recherchez n'existe pas ou a été déplacée.",
+  "errors.404.home": "Retour à l'accueil",
+
+  "internships.title": "Offres de stage",
+  "internships.subtitle.student": "Consulter et postuler aux offres disponibles",
+  "internships.subtitle.default": "Offres disponibles",
+  "internships.loading": "Chargement des offres...",
+  "internships.noOffers": "Aucune offre disponible",
+  "internships.courseType": "Type de cours :",
+  "internships.location": "📍 Lieu :",
+  "internships.startDate": "📅 Date de début :",
+  "internships.endDate": "📅 Date de fin :",
+  "internships.duration": "⏳ Longueur permise :",
+  "internships.durationTo": "à",
+  "internships.weeks": "semaines",
+  "internships.viewOnly": "Consultation seulement",
+  "internships.apply": "Postuler",
+  "internships.login": "Se connecter",
+  "internships.studentOnly": "Seuls les étudiants peuvent postuler à des stages.",
+  "internships.applySuccess": "Candidature envoyée avec succès!",
+  "internships.applyError": "Erreur lors de l'envoi de la candidature."
 }

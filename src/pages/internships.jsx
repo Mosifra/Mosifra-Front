@@ -2,6 +2,7 @@ import { BookOpen, Send, Upload, X } from "lucide-preact"
 import { useLocation } from "preact-iso"
 import { useEffect, useState } from "preact/hooks"
 import { getCookie, getCourseTypes, getUserTypeFromCookie, getBaseUrl } from "../utils"
+import { t, subscribe } from "../i18n"
 
 export default function Internships() {
   const location = useLocation()
@@ -16,6 +17,12 @@ export default function Internships() {
     cv: null,
   })
   const [submitting, setSubmitting] = useState(false)
+  const [, setLocale] = useState()
+
+  useEffect(() => {
+    const unsubscribe = subscribe(() => setLocale({}))
+    return unsubscribe
+  }, [])
 
   useEffect(() => {
 
@@ -67,7 +74,7 @@ export default function Internships() {
 
   const handleApplyClick = (internship) => {
     if (userType !== "student") {
-      alert("Seuls les étudiants peuvent postuler à des stages.")
+      alert(t("internships.studentOnly", null, "Seuls les étudiants peuvent postuler à des stages."))
       return
     }
     setSelectedInternship(internship)
@@ -94,12 +101,12 @@ export default function Internships() {
         cv: applicationData.cv?.name,
       })
 
-      alert("Candidature envoyée avec succès!")
+      alert(t("internships.applySuccess", null, "Candidature envoyée avec succès!"))
       setShowApplicationModal(false)
       setApplicationData({ motivationLetter: "", cv: null })
     } catch (error) {
       console.error("Error submitting application:", error)
-      alert("Erreur lors de l'envoi de la candidature.")
+      alert(t("internships.applyError", null, "Erreur lors de l'envoi de la candidature."))
     } finally {
       setSubmitting(false)
     }
@@ -109,7 +116,7 @@ export default function Internships() {
     return (
       <main className="min-h-screen bg-beige-mosifra flex items-center justify-center">
         <div className="text-center">
-          <p className="text-xl text-vert-mosifra font-semibold">Chargement des offres...</p>
+          <p className="text-xl text-vert-mosifra font-semibold">{t("internships.loading", null, "Chargement des offres...")}</p>
         </div>
       </main>
     )
@@ -121,12 +128,12 @@ export default function Internships() {
       <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="mb-12">
           <h1 className="text-5xl font-bold text-vert-mosifra mb-2">
-            Offres de stage
+            {t("internships.title", null, "Offres de stage")}
           </h1>
           <p className="text-xl text-gray-700">
             {userType === "student"
-              ? "Consulter et postuler aux offres disponibles"
-              : "Offres disponibles"}
+              ? t("internships.subtitle.student", null, "Consulter et postuler aux offres disponibles")
+              : t("internships.subtitle.default", null, "Offres disponibles")}
           </p>
         </div>
 
@@ -142,35 +149,35 @@ export default function Internships() {
                 </h3>
 
                 <p className="text-sm text-gray-600 italic mb-3">
-                  Type de cours : {internship.course_type}
+                  {t("internships.courseType", null, "Type de cours :")} {internship.course_type}
                 </p>
 
                 <div className="space-y-2 text-sm text-gray-700 mb-4">
                   <p>
-                    <span className="font-semibold text-vert-mosifra">📍 Lieu :</span>{" "}
+                    <span className="font-semibold text-vert-mosifra">{t("internships.location", null, "📍 Lieu :")}</span>{" "}
                     {internship.place}
                   </p>
 
                   <p>
                     <span className="font-semibold text-vert-mosifra">
-                      📅 Date de début :
+                      {t("internships.startDate", null, "📅 Date de début :")}
                     </span>{" "}
                     {internship.date_start}
                   </p>
 
                   <p>
                     <span className="font-semibold text-vert-mosifra">
-                      📅 Date de fin :
+                      {t("internships.endDate", null, "📅 Date de fin :")}
                     </span>{" "}
                     {internship.date_end}
                   </p>
 
                   <p>
                     <span className="font-semibold text-vert-mosifra">
-                      ⏳ Longueur permise :
+                      {t("internships.duration", null, "⏳ Longueur permise :")}
                     </span>{" "}
-                    {internship.min_internship_length} à{" "}
-                    {internship.max_internship_length} semaines
+                    {internship.min_internship_length} {t("internships.durationTo", null, "à")}{" "}
+                    {internship.max_internship_length} {t("internships.weeks", null, "semaines")}
                   </p>
                 </div>
 
@@ -180,7 +187,7 @@ export default function Internships() {
 
                 {loadingUserType ? (
                   <div className="w-full px-4 py-3 bg-gray-200 text-gray-600 rounded-lg text-center font-semibold cursor-not-allowed">
-                    Consultation seulement
+                    {t("internships.viewOnly", null, "Consultation seulement")}
                   </div>
                 ) : userType === "student" ? (
                   <button
@@ -188,18 +195,18 @@ export default function Internships() {
                     className="w-full px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Send size={18} />
-                    Postuler
+                    {t("internships.apply", null, "Postuler")}
                   </button>
                 ) : userType === "university" ? (
                   <div className="w-full px-4 py-3 bg-gray-200 text-gray-600 rounded-lg font-semibold text-center cursor-not-allowed">
-                    Consultation seulement
+                    {t("internships.viewOnly", null, "Consultation seulement")}
                   </div>
                 ) : (
                   <button
                     onClick={() => location.route("/login")}
                     className="w-full px-4 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
                   >
-                    Se connecter
+                    {t("internships.login", null, "Se connecter")}
                   </button>
                 )}
               </div>
@@ -210,7 +217,7 @@ export default function Internships() {
         {internships.length === 0 && (
           <div className="text-center py-12">
             <BookOpen size={48} className="mx-auto text-gray-400 mb-4" />
-            <p className="text-xl text-gray-600">Aucune offre disponible</p>
+            <p className="text-xl text-gray-600">{t("internships.noOffers", null, "Aucune offre disponible")}</p>
           </div>
         )}
       </div>

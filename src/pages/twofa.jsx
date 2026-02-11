@@ -1,12 +1,19 @@
 import { getBaseUrl } from "../utils.js"
 import { ArrowRight, Binary } from "lucide-preact";
 import { useLocation } from "preact-iso";
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
+import { t, subscribe } from "../i18n";
 
 export function Twofa() {
   const location = useLocation();
   const [errorMessage, setErrorMessage] = useState("");
   const [code, setCode] = useState("");
+  const [, setLocale] = useState()
+
+  useEffect(() => {
+    const unsubscribe = subscribe(() => setLocale({}))
+    return unsubscribe
+  }, [])
 
   const transactionId = location.query.transaction_id;
   const rememberMe = location.query.remember_me;
@@ -34,7 +41,7 @@ export function Twofa() {
       });
 
       if (!response.ok) {
-        throw new Error("Erreur lors de la requête");
+        throw new Error(t("twofa.error", null, "Erreur lors de la requête"));
       }
 
       const data = await response.json();
@@ -47,7 +54,7 @@ export function Twofa() {
 
         location.route("/");
       } else {
-        setErrorMessage("Code incorrect, veuillez réessayer.")
+        setErrorMessage(t("twofa.incorrect", null, "Code incorrect, veuillez réessayer."))
       }
     } catch (error) {
       console.error("Erreur:", error);
@@ -63,10 +70,10 @@ export function Twofa() {
               <img src="/images/logo_notext.svg" alt="Logo Mosifra" />
             </div>
             <h1 class="text-3xl font-bold text-slate-800 mb-2">
-              Connexion à Mosifra
+              {t("login.title", null, "Connexion à Mosifra")}
             </h1>
             <p class="text-slate-600">
-              Veuillez saisir le code envoyé à l'adresse mail associée à votre compte
+              {t("twofa.instructionAccount", null, "Veuillez saisir le code envoyé à l'adresse mail associée à votre compte")}
             </p>
           </div>
 
@@ -74,7 +81,7 @@ export function Twofa() {
             <form onSubmit={handleSubmit} class="space-y-6">
               <div>
                 <label class="block text-sm font-medium text-slate-700 mb-2">
-                  Code de vérification
+                  {t("twofa.code", null, "Code de vérification")}
                 </label>
                 <div class="relative">
                   <Binary class="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
@@ -82,7 +89,7 @@ export function Twofa() {
                     type="text"
                     value={code}
                     onInput={(e) => setCode(e.target.value)}
-                    placeholder="Votre code"
+                    placeholder={t("twofa.codePlaceholder", null, "Votre code")}
                     class="w-full pl-10 pr-4 py-3 border border-slate-200 text-vert-mosifra rounded-lg focus:border-vert-mosifra focus:outline-none focus:ring-2 focus:ring-vert-mosifra/20"
                     required
                   />
@@ -94,7 +101,7 @@ export function Twofa() {
                 type="submit"
                 class="w-full bg-beige-mosifra text-vert-mosifra py-3 rounded-lg hover:bg-vert-mosifra hover:text-white border border-vert-mosifra transition-all duration-300 transform font-medium flex items-center justify-center gap-2"
               >
-                Valider
+                {t("twofa.submit", null, "Valider")}
                 <ArrowRight class="h-5 w-5" />
               </button>
             </form>
