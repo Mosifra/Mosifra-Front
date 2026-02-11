@@ -1,9 +1,14 @@
 import { ClipboardPen, Handshake } from "lucide-preact";
 import { useLocation } from "preact-iso"
+import { t, subscribe } from "../../i18n"
+import { useEffect, useState } from "preact/hooks"
 
 export default function CompanyHome() {
   const location = useLocation();
   const companyName = "Entreprise bullshit numéro 22";
+  const [, setVersion] = useState(0)
+
+  useEffect(() => subscribe(() => setVersion(v => v + 1)), [])
 
   const handleSubmitInternship = () => {
     location.route("/company/submitinternship")
@@ -18,8 +23,8 @@ export default function CompanyHome() {
       <main className="min-h-screen bg-beige-mosifra">
         <div className="max-w-6xl mx-auto px-4 py-16">
           <div className="mb-16">
-            <h1 className="text-5xl font-bold text-vert-mosifra mb-2">Bienvenue, {companyName}</h1>
-            <p className="text-xl text-gray-700">Gérez vos offres de stage et vos candidatures en un seul endroit</p>
+            <h1 className="text-5xl font-bold text-vert-mosifra mb-2">{t("company.welcome", { name: companyName }, `Bienvenue, ${companyName}`)}</h1>
+            <p className="text-xl text-gray-700">{t("company.subtitle", null, "Gérez vos offres de stage et vos candidatures en un seul endroit")}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -28,17 +33,16 @@ export default function CompanyHome() {
                 <div className="w-12 h-12 bg-vert-mosifra rounded-lg flex items-center justify-center mb-4">
                   <ClipboardPen/>
                 </div>
-                <h2 className="text-2xl font-bold text-vert-mosifra mb-2">Proposer un stage</h2>
+                <h2 className="text-2xl font-bold text-vert-mosifra mb-2">{t("company.submitTitle", null, "Proposer un stage")}</h2>
                 <p className="text-gray-600">
-                  Créez et publiez une nouvelle offre de stage. Définissez les critères, les dates et les formations
-                  recherchées.
+                  {t("company.submitDescription", null, "Créez et publiez une nouvelle offre de stage. Définissez les critères, les dates et les formations recherchées.")}
                 </p>
               </div>
               <button
                 onClick={handleSubmitInternship}
                 className="w-full px-6 py-3 rounded-lg font-medium transition-all transform duration-300 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
               >
-                Accéder
+                {t("company.access", null, "Accéder")}
               </button>
             </div>
 
@@ -47,16 +51,16 @@ export default function CompanyHome() {
                 <div className="w-12 h-12 bg-vert-mosifra rounded-lg flex items-center justify-center mb-4">
                   <Handshake/>
                 </div>
-                <h2 className="text-2xl font-bold text-vert-mosifra mb-2">Gérer les candidatures</h2>
+                <h2 className="text-2xl font-bold text-vert-mosifra mb-2">{t("company.candidatesTitle", null, "Gérer les candidatures")}</h2>
                 <p className="text-gray-600">
-                  Consultez vos candidatures, communiquez avec les candidats et acceptez ou rejetez des offres.
+                  {t("company.candidatesDescription", null, "Consultez vos candidatures, communiquez avec les candidats et acceptez ou rejetez des offres.")}
                 </p>
               </div>
               <button
                 onClick={handleManageCandidates}
                 className="w-full px-6 py-3 rounded-lg font-medium transition-all transform duration-300 bg-beige-mosifra border-1 border-vert-mosifra text-vert-mosifra hover:text-beige-mosifra hover:bg-vert-mosifra"
               >
-                Accéder
+                {t("company.access", null, "Accéder")}
               </button>
             </div>
           </div>

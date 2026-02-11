@@ -1,4 +1,5 @@
 import { useState } from "preact/hooks"
+import { t } from "../../i18n"
 
 const mockCandidates = [
   {
@@ -56,19 +57,19 @@ export default function ManageCandidates() {
     <>
       <main className="min-h-screen bg-beige-mosifra p-8">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl font-bold text-vert-mosifra mb-8">Gestion des candidatures</h1>
+          <h1 className="text-4xl font-bold text-vert-mosifra mb-8">{t("candidates.manage.title", null, "Gestion des candidatures")}</h1>
 
           <div className="grid grid-cols-3 gap-6 mb-8">
             <div className="bg-white rounded-lg border border-gray-300 p-6">
-              <p className="text-sm text-gray-500 mb-2">En attente</p>
+              <p className="text-sm text-gray-500 mb-2">{t("candidates.manage.pending", null, "En attente")}</p>
               <p className="text-3xl font-bold text-vert-mosifra">{stats.pending}</p>
             </div>
             <div className="bg-white rounded-lg border border-gray-300 p-6">
-              <p className="text-sm text-gray-500 mb-2">Acceptés</p>
+              <p className="text-sm text-gray-500 mb-2">{t("candidates.manage.accepted", null, "Acceptés")}</p>
               <p className="text-3xl font-bold text-vert-mosifra">{stats.accepted}</p>
             </div>
             <div className="bg-white rounded-lg border border-gray-300 p-6">
-              <p className="text-sm text-gray-500 mb-2">Total</p>
+              <p className="text-sm text-gray-500 mb-2">{t("candidates.manage.total", null, "Total")}</p>
               <p className="text-3xl font-bold text-gray-900">{stats.total}</p>
             </div>
           </div>
@@ -76,7 +77,7 @@ export default function ManageCandidates() {
           <div className="grid grid-cols-4 gap-6">
             <div className="bg-white rounded-lg border border-gray-300 overflow-hidden flex flex-col h-96">
               <div className="bg-gray-50 px-6 py-4 border-b border-gray-300">
-                <h2 className="font-semibold text-gray-900">Candidats</h2>
+                <h2 className="font-semibold text-gray-900">{t("candidates.manage.candidatesTitle", null, "Candidats")}</h2>
               </div>
               <div className="flex-1 overflow-y-auto">
                 {mockCandidates.map((candidate) => (
@@ -99,10 +100,10 @@ export default function ManageCandidates() {
                       }`}
                     >
                       {candidate.status === "pending"
-                        ? "En attente"
+                        ? t("candidates.status.pending", null, "En attente")
                         : candidate.status === "accepted"
-                          ? "Accepté"
-                          : "Rejeté"}
+                          ? t("candidates.status.accepted", null, "Accepté")
+                          : t("candidates.status.rejected", null, "Rejeté")}
                     </div>
                   </div>
                 ))}
@@ -111,23 +112,23 @@ export default function ManageCandidates() {
 
             <div className="bg-white rounded-lg border border-gray-300 overflow-hidden flex flex-col h-96">
               <div className="bg-gray-50 px-6 py-4 border-b border-gray-300">
-                <h2 className="font-semibold text-gray-900">Détails</h2>
+                <h2 className="font-semibold text-gray-900">{t("candidates.manage.detailsTitle", null, "Détails")}</h2>
               </div>
               <div className="flex-1 overflow-y-auto p-6 space-y-4">
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Nom</p>
+                  <p className="text-xs text-gray-500 mb-1">{t("candidates.manage.name", null, "Nom")}</p>
                   <p className="font-semibold text-gray-900">{selectedCandidate.name}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Email</p>
+                  <p className="text-xs text-gray-500 mb-1">{t("candidates.manage.email", null, "Email")}</p>
                   <p className="text-gray-900 break-all text-sm">{selectedCandidate.email}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Stage demandé</p>
+                  <p className="text-xs text-gray-500 mb-1">{t("candidates.manage.internshipRequested", null, "Stage demandé")}</p>
                   <p className="font-semibold text-gray-900">{selectedCandidate.internship}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Date de candidature</p>
+                  <p className="text-xs text-gray-500 mb-1">{t("candidates.manage.appliedDate", null, "Date de candidature")}</p>
                   <p className="text-gray-900 text-sm">{selectedCandidate.appliedDate}</p>
                 </div>
                 <div className="space-y-2 pt-6">
@@ -135,13 +136,13 @@ export default function ManageCandidates() {
                     onClick={() => handleStatusChange("accepted")}
                     className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-all transform duration-300 text-sm font-medium"
                   >
-                    Accepter
+                    {t("candidates.manage.accept", null, "Accepter")}
                   </button>
                   <button
                     onClick={() => handleStatusChange("rejected")}
                     className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-all transform duration-300 text-sm font-medium"
                   >
-                    Rejeter
+                    {t("candidates.manage.reject", null, "Rejeter")}
                   </button>
                 </div>
               </div>
@@ -149,7 +150,7 @@ export default function ManageCandidates() {
 
             <div className="col-span-2 bg-white rounded-lg border border-gray-300 overflow-hidden flex flex-col h-96">
               <div className="bg-gray-50 px-6 py-4 border-b border-gray-300">
-                <h2 className="font-semibold text-gray-900">Chat avec {selectedCandidate.name}</h2>
+                <h2 className="font-semibold text-gray-900">{t("candidates.manage.chatTitle", { name: selectedCandidate.name }, `Chat avec ${selectedCandidate.name}`)}</h2>
               </div>
               <div className="flex-1 overflow-y-auto p-6 space-y-4">
                 {messages.map((msg, idx) => (
@@ -172,14 +173,14 @@ export default function ManageCandidates() {
                   onKeyPress={(e) => {
                     if (e.key === "Enter") handleSendMessage()
                   }}
-                  placeholder="Écrire un message..."
+                  placeholder={t("candidates.manage.messagePlaceholder", null, "Écrire un message...")}
                   className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-sm"
                 />
                 <button
                   onClick={handleSendMessage}
                   className="bg-vert-mosifra text-white px-6 py-2 rounded-lg hover:opacity-90 transition-all duration-300 transform font-medium"
                 >
-                  Envoyer
+                  {t("candidates.manage.send", null, "Envoyer")}
                 </button>
               </div>
             </div>
