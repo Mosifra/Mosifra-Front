@@ -274,6 +274,43 @@
   "candidates.status.accepted": "Accepted",
   "candidates.status.rejected": "Rejected",
 
+  "student.account.title": "My student account",
+  "student.account.subtitle": "Profile information",
+  "student.account.personalInfo": "Personal information",
+  "student.account.email": "Email",
+  "student.account.university": "University",
+  "student.account.cursus": "Program",
+  "student.account.applicationsInProgress": "Applications in progress",
+  "student.account.acceptedInternships": "Accepted internships",
+  "student.account.inProgress": "In progress",
+
+  "student.applications.loading": "Loading applications...",
+  "student.applications.title": "My applications",
+  "student.applications.subtitle": "Track the status of all your internship applications",
+  "student.applications.total": "Total",
+  "student.applications.accepted": "Accepted",
+  "student.applications.pending": "Pending",
+  "student.applications.rejected": "Rejected",
+  "student.applications.filterAll": "All",
+  "student.applications.statusAccepted": "Accepted",
+  "student.applications.statusPending": "Pending",
+  "student.applications.statusRejected": "Rejected",
+  "student.applications.noFound": "No applications found",
+  "student.applications.browseOffers": "Browse offers",
+  "student.applications.details": "Details",
+  "student.applications.responseDate": "Response:",
+  "student.applications.appliedDate": "Application:",
+
+  "student.home.welcome": "Welcome, {name}",
+  "student.home.subtitle": "Find and apply to the best internship offers",
+  "student.home.browseTitle": "Browse internships",
+  "student.home.browseDescription": "Discover all available internship offers tailored to your profile and aspirations.",
+  "student.home.accountTitle": "My account",
+  "student.home.accountDescription": "Manage your profile, update your CV and check your applications.",
+  "student.home.applicationsTitle": "My applications",
+  "student.home.applicationsDescription": "Track the status of your applications and company responses.",
+  "student.home.access": "Access",
+
   "university.promotions": "Promotions"
 }
 
