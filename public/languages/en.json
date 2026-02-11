@@ -311,6 +311,41 @@
   "student.home.applicationsDescription": "Track the status of your applications and company responses.",
   "student.home.access": "Access",
 
-  "university.promotions": "Promotions"
+  "university.classes.title": "Class Management",
+  "university.classes.subtitle": "Manage your classes and import your student lists",
+  "university.classes.newClass": "New class",
+  "university.classes.addTitle": "Add a new class",
+  "university.classes.classNameLabel": "Class name",
+  "university.classes.classNamePlaceholder": "ex: BUT3",
+  "university.classes.courseTypeLabel": "Program",
+  "university.classes.courseTypeSelect": "— Select a type —",
+  "university.classes.courseTypeInfo": "Computer Science",
+  "university.classes.startDateLabel": "Start date",
+  "university.classes.endDateLabel": "End date",
+  "university.classes.minDurationLabel": "Minimum duration (weeks)",
+  "university.classes.maxDurationLabel": "Maximum duration (weeks)",
+  "university.classes.createButton": "Create class",
+  "university.classes.cancelButton": "Cancel",
+  "university.classes.back": "Back to classes",
+  "university.classes.studentListTitle": "Student list",
+  "university.classes.tableLastName": "Last name",
+  "university.classes.tableFirstName": "First name",
+  "university.classes.tableEmail": "Email",
+  "university.classes.noStudents": "No students imported for this class",
+  "university.classes.uploadCSV": "Import CSV",
+  "university.classes.uploading": "Processing...",
+  "university.classes.csvFormat": "Format: First name, Last name, Email",
+  "university.classes.noClasses": "No classes created. Start by adding a new class.",
+  "university.classes.deleteConfirm": "Are you sure you want to delete this class? This action is irreversible.",
+
+  "university.promotions": "Promotions",
+
+  "university.home.welcome": "Welcome, {name}",
+  "university.home.internshipsTitle": "View internship offers",
+  "university.home.internshipsDescription": "Browse the list of internships available from companies.",
+  "university.home.internshipsAccess": "Access",
+  "university.home.studentsTitle": "Manage students",
+  "university.home.studentsDescription": "Manage your classes and student lists.",
+  "university.home.studentsAccess": "Access"
 }
 

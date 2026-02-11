@@ -2,6 +2,7 @@ import { ChevronLeft, Plus, Trash2, Upload } from "lucide-preact";
 import { useEffect, useState } from "preact/hooks";
 import { getCookie } from "../../utils";
 import { getBaseUrl } from "../../utils";
+import { t } from "../../i18n"
 
 export default function UniversityClasses() {
   const [classes, setClasses] = useState([]);
@@ -138,7 +139,7 @@ export default function UniversityClasses() {
   };
 
   const handleDeleteClass = async (id) => {
-    const confirmed = window.confirm("Avez-vous la certitude de vouloir supprimer cette classe ? Cette action est irréversible.")
+    const confirmed = window.confirm(t("university.classes.deleteConfirm", null, "Avez-vous la certitude de vouloir supprimer cette classe ? Cette action est irréversible."))
     if (!confirmed) return;
 
     const headers = new Headers();
@@ -240,7 +241,7 @@ export default function UniversityClasses() {
             className="flex items-center gap-2 mb-8 text-vert-mosifra font-semibold hover:opacity-70 transition-all duration-300 transform"
           >
             <ChevronLeft size={20} />
-            Retour aux classes
+            {t("university.classes.back", null, "Retour aux classes")}
           </button>
 
           <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra mb-8">
@@ -250,7 +251,7 @@ export default function UniversityClasses() {
 
             <div className="grid md:grid-cols-2 gap-6 mt-8">
               <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Cursus</p>
+                <p className="text-sm text-gray-600 mb-1">{t("university.classes.courseTypeLabel", null, "Cursus")}</p>
                 <p className="text-lg font-semibold text-vert-mosifra">
                   {COURSE_TYPE_LABELS[selectedClass?.course_type] ||
                     selectedClass?.course_type}
@@ -258,14 +259,14 @@ export default function UniversityClasses() {
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Début du stage</p>
+                <p className="text-sm text-gray-600 mb-1">{t("university.classes.startDateLabel", null, "Début du stage")}</p>
                 <p className="text-lg font-semibold text-vert-mosifra">
                   {selectedClass?.date_internship_start}
                 </p>
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Fin du stage</p>
+                <p className="text-sm text-gray-600 mb-1">{t("university.classes.endDateLabel", null, "Fin du stage")}</p>
                 <p className="text-lg font-semibold text-vert-mosifra">
                   {selectedClass?.date_internship_end}
                 </p>
@@ -273,7 +274,7 @@ export default function UniversityClasses() {
 
               <div className="p-4 bg-gray-50 rounded-lg">
                 <p className="text-sm text-gray-600 mb-1">
-                  Durée minimale (semaines)
+                  {t("university.classes.minDurationLabel", null, "Durée minimale (semaines)")}
                 </p>
                 <p className="text-lg font-semibold text-vert-mosifra">
                   {selectedClass?.minimum_internship_length}
@@ -282,7 +283,7 @@ export default function UniversityClasses() {
 
               <div className="p-4 bg-gray-50 rounded-lg">
                 <p className="text-sm text-gray-600 mb-1">
-                  Durée maximale (semaines)
+                  {t("university.classes.maxDurationLabel", null, "Durée maximale (semaines)")}
                 </p>
                 <p className="text-lg font-semibold text-vert-mosifra">
                   {selectedClass?.maximum_internship_length}
@@ -293,7 +294,7 @@ export default function UniversityClasses() {
 
           <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-vert-mosifra">
             <h2 className="text-2xl font-bold text-vert-mosifra mb-6">
-              Liste des étudiants
+              {t("university.classes.studentListTitle", null, "Liste des étudiants")}
             </h2>
 
             {selectedClass?.studentList?.length > 0 ? (
@@ -302,13 +303,13 @@ export default function UniversityClasses() {
                   <thead>
                     <tr className="border-b-2 border-gray-200">
                       <th className="px-4 py-3 text-left font-semibold text-gray-700">
-                        Nom
+                        {t("university.classes.tableLastName", null, "Nom")}
                       </th>
                       <th className="px-4 py-3 text-left font-semibold text-gray-700">
-                        Prénom
+                        {t("university.classes.tableFirstName", null, "Prénom")}
                       </th>
                       <th className="px-4 py-3 text-left font-semibold text-gray-700">
-                        Courriel
+                        {t("university.classes.tableEmail", null, "Courriel")}
                       </th>
                     </tr>
                   </thead>
@@ -334,7 +335,7 @@ export default function UniversityClasses() {
               </div>
             ) : (
               <p className="text-center text-gray-600 py-8">
-                Aucun étudiant importé pour cette classe
+                {t("university.classes.noStudents", null, "Aucun étudiant importé pour cette classe")}
               </p>
             )}
           </div>
@@ -349,10 +350,10 @@ export default function UniversityClasses() {
         <div className="mb-8 flex justify-between items-center">
           <div>
             <h1 className="text-5xl font-bold text-vert-mosifra mb-2">
-              Gestion des classes
+              {t("university.classes.title", null, "Gestion des classes")}
             </h1>
             <p className="text-xl text-gray-700">
-              Gérez vos classes et importez vos listes d'étudiants
+              {t("university.classes.subtitle", null, "Gérez vos classes et importez vos listes d'étudiants")}
             </p>
           </div>
 
@@ -361,33 +362,33 @@ export default function UniversityClasses() {
             className="px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:text-vert-mosifra hover:border-vert-mosifra hover:border-1 hover:bg-beige-mosifra transition-all duration-300 transform flex items-center gap-2"
           >
             <Plus size={20} />
-            Nouvelle classe
+            {t("university.classes.newClass", null, "Nouvelle classe")}
           </button>
         </div>
 
         {showAddForm && (
           <div className="bg-white rounded-xl shadow-md p-8 mb-8 border-l-4 border-vert-mosifra">
             <h2 className="text-2xl font-bold text-vert-mosifra mb-6">
-              Ajouter une nouvelle classe
+              {t("university.classes.addTitle", null, "Ajouter une nouvelle classe")}
             </h2>
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Nom de la classe
+                  {t("university.classes.classNameLabel", null, "Nom de la classe")}
                 </label>
                 <input
                   type="text"
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
-                  placeholder="ex : BUT3"
+                  placeholder={t("university.classes.classNamePlaceholder", null, "ex : BUT3")}
                   className="w-full px-4 text-black py-2 border border-gray-300 rounded-lg focus:border-vert-mosifra"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Cursus
+                  {t("university.classes.courseTypeLabel", null, "Cursus")}
                 </label>
 
                 <select
@@ -395,14 +396,14 @@ export default function UniversityClasses() {
                   onChange={(e) => setNewCourseType(e.target.value)}
                   className="w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:border-vert-mosifra placeholder:text-gray-500"
                 >
-                  <option value="">— Choisir un type —</option>
-                  <option value="info">Informatique</option>
+                  <option value="">{t("university.classes.courseTypeSelect", null, "— Choisir un type —")}</option>
+                  <option value="info">{t("university.classes.courseTypeInfo", null, "Informatique")}</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Début du stage
+                  {t("university.classes.startDateLabel", null, "Début du stage")}
                 </label>
                 <input
                   type="date"
@@ -414,7 +415,7 @@ export default function UniversityClasses() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Fin du stage
+                  {t("university.classes.endDateLabel", null, "Fin du stage")}
                 </label>
                 <input
                   type="date"
@@ -426,7 +427,7 @@ export default function UniversityClasses() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Durée minimale (semaines)
+                  {t("university.classes.minDurationLabel", null, "Durée minimale (semaines)")}
                 </label>
                 <input
                   type="number"
@@ -438,7 +439,7 @@ export default function UniversityClasses() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Durée maximale (semaines)
+                  {t("university.classes.maxDurationLabel", null, "Durée maximale (semaines)")}
                 </label>
                 <input
                   type="number"
@@ -454,14 +455,14 @@ export default function UniversityClasses() {
                 onClick={handleAddClass}
                 className="px-6 py-2 bg-vert-mosifra text-white rounded-lg font-semibold"
               >
-                Créer la classe
+                {t("university.classes.createButton", null, "Créer la classe")}
               </button>
 
               <button
                 onClick={() => setShowAddForm(false)}
                 className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg font-semibold"
               >
-                Annuler
+                {t("university.classes.cancelButton", null, "Annuler")}
               </button>
             </div>
           </div>
@@ -519,13 +520,13 @@ export default function UniversityClasses() {
                 >
                   <Upload size={18} />
                   {uploadingClassId === classItem.id
-                    ? "Traitement..."
-                    : "Importer CSV"}
+                    ? t("university.classes.uploading", null, "Traitement...")
+                    : t("university.classes.uploadCSV", null, "Importer CSV")}
                 </label>
               </div>
 
               <p className="text-xs text-gray-500 mt-3 text-center">
-                Format : Prénom, Nom, Courriel
+                {t("university.classes.csvFormat", null, "Format : Prénom, Nom, Courriel")}
               </p>
             </div>
           ))}
@@ -534,7 +535,7 @@ export default function UniversityClasses() {
         {classes.length === 0 && !showAddForm && (
           <div className="text-center py-16">
             <p className="text-xl text-gray-600">
-              Aucune classe créée. Commencez par ajouter une nouvelle classe.
+              {t("university.classes.noClasses", null, "Aucune classe créée. Commencez par ajouter une nouvelle classe.")}
             </p>
           </div>
         )}
