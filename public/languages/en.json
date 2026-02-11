@@ -2,6 +2,9 @@
   "app.name": "Mosifra",
   "app.subtitle": "Internship management",
 
+  "home.title": "International Internship Management Platform MOSIFRA",
+  "home.description": "Mosifra is a platform dedicated to managing international internships. It connects universities, companies and students to facilitate the organization and monitoring of internships abroad. Due to the private status of the platform, we ask you to log in to your account.",
+
   "nav.home": "Home",
   "nav.dashboard": "Dashboard",
   "nav.internships": "Internships",

@@ -2,6 +2,9 @@
   "app.name": "Mosifra",
   "app.subtitle": "Gestion des stages",
 
+  "home.title": "Plateforme de gestion des stages à l'étranger MOSIFRA",
+  "home.description": "Mosifra est une plateforme dédiée à la gestion des stages internationaux. Elle connecte les universités, entreprises et étudiants pour faciliter l'organisation et le suivi des stages à l'étranger. Dû au statut privé de la plateforme, nous vous prions de vous connecter à votre compte.",
+
   "nav.home": "Accueil",
   "nav.dashboard": "Tableau de bord",
   "nav.internships": "Stages",
