@@ -1,11 +1,13 @@
-import { useEffect, useState } from "preact/hooks";
+import { t, subscribe } from "../i18n";
 import { clearSessionCookies, getUserTypeFromCookie, getCookie } from "../utils.js";
 import { useLocation } from "preact-iso";
 import { getBaseUrl } from "../utils.js";
+import { useEffect, useState } from "preact/hooks";
 
 export function Header() {
   const { route } = useLocation();
   const [userType, setUserType] = useState(null);
+  const [, setVersion] = useState(0);
 
   useEffect(() => {
     const updateUserType = async () => {
@@ -20,6 +22,8 @@ export function Header() {
       window.removeEventListener("userTypeUpdated", updateUserType);
     };
   }, []);
+
+  useEffect(() => subscribe(() => setVersion(v => v + 1)), []);
 
   async function handleLogOut() {
     const jwt = getCookie("jwt");
@@ -52,11 +56,11 @@ export function Header() {
                 <img
                   src="/images/logoverttext.svg"
                   class="w-10 h-10"
-                  alt="Mosifra"
+                  alt={t("app.name", null, "Mosifra")}
                 />
               </div>
               <div>
-                <span class="text-xl font-bold text-slate-800">Mosifra</span>
+                <span class="text-xl font-bold text-slate-800">{t("app.name", null, "Mosifra")}</span>
               </div>
             </div>
           </div>
@@ -67,9 +71,10 @@ export function Header() {
                 href="/"
                 class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium"
               >
-                Accueil
+                {t("nav.home", null, "Accueil")}
               </a>
             </li>
+
             {!userType && (
               <li>
                 <a
@@ -80,7 +85,7 @@ export function Header() {
                   }}
                   class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium"
                 >
-                  Se connecter
+                  {t("nav.login", null, "Se connecter")}
                 </a>
               </li>
             )}
@@ -92,7 +97,7 @@ export function Header() {
                     href="/student/account"
                     class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium"
                   >
-                    Compte
+                    {t("nav.profile", null, "Compte")}
                   </a>
                 </li>
                 <li>
@@ -100,7 +105,7 @@ export function Header() {
                     href="/internships"
                     class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium"
                   >
-                    Stages
+                    {t("nav.internships", null, "Stages")}
                   </a>
                 </li>
               </>
@@ -113,7 +118,7 @@ export function Header() {
                     href="/company/managecandidates"
                     class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium"
                   >
-                    Candidatures
+                    {t("company.candidates", null, "Candidatures")}
                   </a>
                 </li>
                 <li>
@@ -121,7 +126,7 @@ export function Header() {
                     href="/company/submitinternship"
                     class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium"
                   >
-                    Créer une offre
+                    {t("company.createOffer", null, "Créer une offre")}
                   </a>
                 </li>
               </>
@@ -134,7 +139,7 @@ export function Header() {
                     href="/internships"
                     class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium"
                   >
-                    Stages
+                    {t("nav.internships", null, "Stages")}
                   </a>
                 </li>
                 <li>
@@ -142,7 +147,7 @@ export function Header() {
                     href="/university/students"
                     class="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium"
                   >
-                    Promotions
+                    {t("university.promotions", null, "Promotions")}
                   </a>
                 </li>
               </>
@@ -153,7 +158,7 @@ export function Header() {
                 onClick={handleLogOut}
                 className="px-4 py-2 bg-beige-mosifra rounded-full text-vert-mosifra border-1 border-vert-mosifra transition-colors duration-300 hover:bg-vert-mosifra hover:text-white font-medium"
               >
-                Se déconnecter
+                {t("nav.logout", null, "Se déconnecter")}
               </button>
             )}
 
