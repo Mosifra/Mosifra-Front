@@ -1,8 +1,7 @@
 import { BookOpen, Send, Upload, X } from "lucide-preact"
 import { useLocation } from "preact-iso"
 import { useEffect, useState } from "preact/hooks"
-import { getCookie, getCourseTypes, getStudentCourseType, getUserTypeFromCookie } from "../utils"
-import { getBaseUrl } from "../utils"
+import { getCookie, getCourseTypes, getUserTypeFromCookie, getBaseUrl } from "../utils"
 
 export default function Internships() {
   const location = useLocation()

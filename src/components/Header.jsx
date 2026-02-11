@@ -3,6 +3,7 @@ import { clearSessionCookies, getUserTypeFromCookie, getCookie } from "../utils.
 import { useLocation } from "preact-iso";
 import { getBaseUrl } from "../utils.js";
 import { useEffect, useState } from "preact/hooks";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export function Header() {
   const { route } = useLocation();
@@ -161,6 +162,10 @@ export function Header() {
                 {t("nav.logout", null, "Se déconnecter")}
               </button>
             )}
+
+            <li>
+              <LanguageSwitcher />
+            </li>
 
           </ul>
         </div>
