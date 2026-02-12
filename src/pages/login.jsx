@@ -103,33 +103,30 @@ export function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setUserType("student")}
-                  class={`px-3 py-2 text-sm rounded-lg border transition-all duration-300 transform ${
-                    userType === "student"
-                      ? "bg-vert-mosifra text-white border-vert-mosifra"
-                      : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
-                  }`}
+                  class={`px-3 py-2 text-sm rounded-lg border transition-all duration-300 transform ${userType === "student"
+                    ? "bg-vert-mosifra text-white border-vert-mosifra"
+                    : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
+                    }`}
                 >
                   {t("userTypes.student", null, "Étudiant")}
                 </button>
                 <button
                   type="button"
                   onClick={() => setUserType("company")}
-                  class={`px-3 py-2 text-sm rounded-lg border transition-all duration-300 transform ${
-                    userType === "company"
-                      ? "bg-vert-mosifra text-white border-vert-mosifra"
-                      : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
-                  }`}
+                  class={`px-3 py-2 text-sm rounded-lg border transition-all duration-300 transform ${userType === "company"
+                    ? "bg-vert-mosifra text-white border-vert-mosifra"
+                    : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
+                    }`}
                 >
                   {t("userTypes.company", null, "Entreprise")}
                 </button>
                 <button
                   type="button"
                   onClick={() => setUserType("university")}
-                  class={`px-3 py-2 text-sm rounded-lg border transition-all duration-300 transform ${
-                    userType === "university"
-                      ? "bg-vert-mosifra text-white border-vert-mosifra"
-                      : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
-                  }`}
+                  class={`px-3 py-2 text-sm rounded-lg border transition-all duration-300 transform ${userType === "university"
+                    ? "bg-vert-mosifra text-white border-vert-mosifra"
+                    : "bg-white text-slate-600 border-slate-200 hover:border-vert-mosifra"
+                    }`}
                 >
                   {t("userTypes.university", null, "Université")}
                 </button>
@@ -194,7 +191,7 @@ export function LoginPage() {
                     class="rounded border-slate-300 text-vert-mosifra focus:ring-vert-mosifra"
                   />
                   <span class="ml-2 text-sm text-slate-600">
-                    {t("login.remember_me", null, "Se souvenir de moi")}
+                    {t("login.remember", null, "Se souvenir de moi")}
                   </span>
                 </label>
 
