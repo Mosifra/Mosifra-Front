@@ -1,6 +1,7 @@
 import { useState, useEffect } from "preact/hooks"
 import { useLocation } from "preact-iso"
 import { Clock, CheckCircle, XCircle, FileText, ArrowRight } from "lucide-preact"
+import { t } from "../../i18n"
 
 export default function Applications() {
   const location = useLocation()
@@ -63,17 +64,17 @@ export default function Applications() {
   const getStatusBadge = (status) => {
     const badges = {
       accepted: {
-        label: "Accepté",
+        label: t("student.applications.statusAccepted", null, "Accepté"),
         icon: <CheckCircle size={16} />,
         color: "bg-green-100 text-green-700 border-green-300",
       },
       pending: {
-        label: "En attente",
+        label: t("student.applications.statusPending", null, "En attente"),
         icon: <Clock size={16} />,
         color: "bg-yellow-100 text-yellow-700 border-yellow-300",
       },
       rejected: {
-        label: "Rejeté",
+        label: t("student.applications.statusRejected", null, "Rejeté"),
         icon: <XCircle size={16} />,
         color: "bg-red-100 text-red-700 border-red-300",
       },
@@ -97,7 +98,7 @@ export default function Applications() {
     return (
       <main className="min-h-screen bg-beige-mosifra flex items-center justify-center">
         <div className="text-center">
-          <p className="text-xl text-vert-mosifra font-semibold">Chargement des candidatures...</p>
+          <p className="text-xl text-vert-mosifra font-semibold">{t("student.applications.loading", null, "Chargement des candidatures...")}</p>
         </div>
       </main>
     )
@@ -107,26 +108,26 @@ export default function Applications() {
     <main className="min-h-screen bg-beige-mosifra">
       <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="mb-12">
-          <h1 className="text-5xl font-bold text-vert-mosifra mb-2">Mes candidatures</h1>
-          <p className="text-xl text-gray-700">Suivez l'état de toutes vos candidatures de stage</p>
+          <h1 className="text-5xl font-bold text-vert-mosifra mb-2">{t("student.applications.title", null, "Mes candidatures")}</h1>
+          <p className="text-xl text-gray-700">{t("student.applications.subtitle", null, "Suivez l'état de toutes vos candidatures de stage")}</p>
         </div>
 
         <div className="grid md:grid-cols-4 gap-4 mb-10">
           <div className="bg-white rounded-lg p-6 border border-gray-200">
             <p className="text-3xl font-bold text-vert-mosifra mb-1">{stats.total}</p>
-            <p className="text-gray-600 font-medium">Total</p>
+            <p className="text-gray-600 font-medium">{t("student.applications.total", null, "Total")}</p>
           </div>
           <div className="bg-white rounded-lg p-6 border border-green-200">
             <p className="text-3xl font-bold text-green-600 mb-1">{stats.accepted}</p>
-            <p className="text-gray-600 font-medium">Acceptées</p>
+            <p className="text-gray-600 font-medium">{t("student.applications.accepted", null, "Acceptées")}</p>
           </div>
           <div className="bg-white rounded-lg p-6 border border-yellow-200">
             <p className="text-3xl font-bold text-yellow-600 mb-1">{stats.pending}</p>
-            <p className="text-gray-600 font-medium">En attente</p>
+            <p className="text-gray-600 font-medium">{t("student.applications.pending", null, "En attente")}</p>
           </div>
           <div className="bg-white rounded-lg p-6 border border-red-200">
             <p className="text-3xl font-bold text-red-600 mb-1">{stats.rejected}</p>
-            <p className="text-gray-600 font-medium">Rejetées</p>
+            <p className="text-gray-600 font-medium">{t("student.applications.rejected", null, "Rejetées")}</p>
           </div>
         </div>
 
@@ -139,7 +140,7 @@ export default function Applications() {
                 : "bg-white text-vert-mosifra border border-vert-mosifra hover:bg-beige-mosifra"
             }`}
           >
-            Tous
+            {t("student.applications.filterAll", null, "Tous")}
           </button>
           <button
             onClick={() => setFilter("accepted")}
@@ -149,7 +150,7 @@ export default function Applications() {
                 : "bg-white text-green-600 border border-green-300 hover:bg-green-50"
             }`}
           >
-            Acceptées
+            {t("student.applications.accepted", null, "Acceptées")}
           </button>
           <button
             onClick={() => setFilter("pending")}
@@ -159,7 +160,7 @@ export default function Applications() {
                 : "bg-white text-yellow-600 border border-yellow-300 hover:bg-yellow-50"
             }`}
           >
-            En attente
+            {t("student.applications.pending", null, "En attente")}
           </button>
           <button
             onClick={() => setFilter("rejected")}
@@ -169,7 +170,7 @@ export default function Applications() {
                 : "bg-white text-red-600 border border-red-300 hover:bg-red-50"
             }`}
           >
-            Rejetées
+            {t("student.applications.rejected", null, "Rejetées")}
           </button>
         </div>
 
@@ -194,7 +195,7 @@ export default function Applications() {
                           <div className="flex flex-wrap gap-3 text-sm text-gray-600">
                             <span>📍 {application.location}</span>
                             <span>💼 {application.salary}</span>
-                            <span>📅 Candidature: {new Date(application.appliedDate).toLocaleDateString("fr-FR")}</span>
+                            <span>📅 {t("student.applications.appliedDate", null, "Candidature:")}: {new Date(application.appliedDate).toLocaleDateString("fr-FR")}</span>
                           </div>
                         </div>
                       </div>
@@ -210,12 +211,12 @@ export default function Applications() {
 
                       {application.responseDate && (
                         <p className="text-sm text-gray-600">
-                          Réponse: {new Date(application.responseDate).toLocaleDateString("fr-FR")}
+                          {t("student.applications.responseDate", null, "Réponse:")}: {new Date(application.responseDate).toLocaleDateString("fr-FR")}
                         </p>
                       )}
 
                       <button className="mt-2 px-4 py-2 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 transform flex items-center gap-2">
-                        Détails
+                        {t("student.applications.details", null, "Détails")}
                         <ArrowRight size={16} />
                       </button>
                     </div>
@@ -226,12 +227,12 @@ export default function Applications() {
           ) : (
             <div className="bg-white rounded-lg p-12 text-center border border-gray-200">
               <FileText size={48} className="mx-auto text-gray-400 mb-4" />
-              <p className="text-xl text-gray-600 mb-4">Aucune candidature trouvée</p>
+              <p className="text-xl text-gray-600 mb-4">{t("student.applications.noFound", null, "Aucune candidature trouvée")}</p>
               <button
                 onClick={() => location.route("/internships")}
                 className="px-6 py-3 bg-vert-mosifra text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 transform"
               >
-                Parcourir les offres
+                {t("student.applications.browseOffers", null, "Parcourir les offres")}
               </button>
             </div>
           )}

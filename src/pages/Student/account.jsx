@@ -1,6 +1,7 @@
 import { useState, useEffect } from "preact/hooks"
 import { FileText, User, Mail, Phone } from "lucide-preact"
-import { getBaseUrl } from "../../utils"
+import { getBaseUrl, getCookie } from "../../utils"
+import { t } from "../../i18n"
 
 export default function StudentAccount() {
   const [studentData, setStudentData] = useState({
@@ -38,8 +39,8 @@ export default function StudentAccount() {
     <main className="min-h-screen bg-beige-mosifra py-12">
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-vert-mosifra mb-2">Mon compte étudiant</h1>
-          <p className="text-gray-700">Informations de votre profil</p>
+          <h1 className="text-4xl font-bold text-vert-mosifra mb-2">{t("student.account.title", null, "Mon compte étudiant")}</h1>
+          <p className="text-gray-700">{t("student.account.subtitle", null, "Informations de votre profil")}</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -61,11 +62,11 @@ export default function StudentAccount() {
             <div>
               <h3 className="text-xl font-bold text-vert-mosifra mb-4 flex items-center gap-2">
                 <User size={20} />
-                Informations personnelles
+                {t("student.account.personalInfo", null, "Informations personnelles")}
               </h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">{t("student.account.email", null, "Email")}</label>
                   <p className="px-4 py-2 bg-gray-50 rounded-lg text-gray-700 flex items-center gap-2">
                     <Mail size={16} />
                     {studentData.email || "—"}
@@ -73,14 +74,14 @@ export default function StudentAccount() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Université</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">{t("student.account.university", null, "Université")}</label>
                   <p className="px-4 py-2 bg-gray-50 rounded-lg text-gray-700">
                     {studentData.university || "—"}
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Cursus</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">{t("student.account.cursus", null, "Cursus")}</label>
                   <p className="px-4 py-2 bg-gray-50 rounded-lg text-gray-700">
                     {studentData.class_name || "—"}
                   </p>
@@ -93,15 +94,15 @@ export default function StudentAccount() {
         <div className="grid md:grid-cols-3 gap-4 mt-8">
           <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
             <p className="text-3xl font-bold text-vert-mosifra mb-1">3</p>
-            <p className="text-gray-600">Candidatures en cours</p>
+            <p className="text-gray-600">{t("student.account.applicationsInProgress", null, "Candidatures en cours")}</p>
           </div>
           <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
             <p className="text-3xl font-bold text-vert-mosifra mb-1">2</p>
-            <p className="text-gray-600">Stages acceptés</p>
+            <p className="text-gray-600">{t("student.account.acceptedInternships", null, "Stages acceptés")}</p>
           </div>
           <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
             <p className="text-3xl font-bold text-vert-mosifra mb-1">1</p>
-            <p className="text-gray-600">En cours</p>
+            <p className="text-gray-600">{t("student.account.inProgress", null, "En cours")}</p>
           </div>
         </div>
       </div>

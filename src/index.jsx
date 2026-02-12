@@ -16,6 +16,9 @@ import ManageStudents from './pages/University/ManageStudents.jsx';
 import { ProtectedRouteByType } from './components/ProtectedRouteByType.jsx';
 import { Footer } from './components/footer.jsx';
 import { Unauthorized } from './pages/_403.jsx';
+import { initI18n } from "./i18n";
+
+initI18n();
 
 export function App() {
   return (
