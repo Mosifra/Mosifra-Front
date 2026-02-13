@@ -105,8 +105,10 @@ export function clearSessionCookies() {
 }
 
 export async function getCourseTypes() {
+  let fetchurl;
   const jwt = getCookie("jwt");
-  const userType = getUserTypeFromCookie(jwt);
+  const userType = await getUserTypeFromCookie();
+  console.log(`USER TYPE : ${userType}`);
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${jwt}`,
@@ -118,9 +120,9 @@ export async function getCourseTypes() {
   };
 
   if (userType == "student") {
-    const fetchurl = `${getBaseUrl()}/user/student/course_type`;
+    fetchurl = `${getBaseUrl()}/user/student/course_type`;
   } else if (userType == "university") {
-    const fetchurl = `${getBaseUrl()}/user/university/course_types`;
+    fetchurl = `${getBaseUrl()}/user/university/course_types`;
   } else {
     console.log("L'utilisateur n'est pas autorisé à accéder à la route");
   }

@@ -35,7 +35,8 @@ export default function Internships() {
 
     const fetchInternships = async () => {
       const jwt = getCookie("jwt");
-      const course_types = getCourseTypes();
+      const course_types = await getCourseTypes();
+      console.log(course_types)
       const headers = {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${jwt}`
@@ -68,6 +69,8 @@ export default function Internships() {
         console.error(error);
       }
     }
+
+    fetchInternships()
 
     setLoading(false)
   }, [])
